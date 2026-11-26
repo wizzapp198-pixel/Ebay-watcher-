@@ -7,6 +7,7 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 - Preis: – bis 800 € · Ref.: 900 €
 - Zustand gebraucht · eBay-Kaufart egal · KA: deutschlandweit · min. Vertrauen 70 · ⚠️ verdächtige senden
 - Ausschluss: kein käuferschutz
+- KI-Wunsch: NUR DIE KARTE kein Paket.
 
 ## Fahrrad (▶️ aktiv)
 - Suche: `Fahrrad` · Quellen: eBay + Kleinanzeigen

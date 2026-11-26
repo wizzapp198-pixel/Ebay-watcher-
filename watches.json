@@ -14,6 +14,7 @@
       "exclude": [
         "kein käuferschutz"
       ],
+      "ai_hint": "NUR DIE KARTE kein Paket.",
       "min_trust": 70,
       "send_suspicious": true,
       "active": true
