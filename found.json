@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583457409",
+   "source": "kleinanzeigen",
+   "title": "ASUS ROG Strix Gaming GeForce RTX 5070 Ti OC 16GB NVIDIA",
+   "price": 539.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/asus-rog-strix-gaming-geforce-rtx-5070-ti-oc-16gb-nvidia/3583457409-225-3176",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/63/63afa635-272b-4a37-ac19-e8311f005835?rule=$_59.AUTO",
+   "location": "30449 Linden-Limmer",
+   "watch": "RTX 5070 Ti",
+   "score": 37,
+   "reasons": "KI ✓ Die Grafikkarte entspricht genau dem Suchauftrag.; Account jung (seit 09.09.2026); TOP Zufriedenheit, Zuverlässig; privat; 3 Anzeigen online; Versand möglich; ⚠ Preis nur 47% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T23:46:19+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583453635",
    "source": "kleinanzeigen",
    "title": "Asus AMD Radeon RX 9070 XT",
