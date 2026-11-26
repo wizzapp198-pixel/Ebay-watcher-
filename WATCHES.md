@@ -24,7 +24,7 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 
 ## RTX 5070 Ti (▶️ aktiv)
 - Suche: `RTX 5070 Ti` · Quellen: eBay + Kleinanzeigen
-- Preis: – bis 780 € · Ref.: 1100 €
+- Preis: – bis 850 € · Ref.: 1150 €
 - Zustand egal · eBay-Kaufart egal · KA: deutschlandweit · ⚠️ verdächtige senden
 - Ausschluss: kein käuferschutz
 - KI-Wunsch: Nur die einzelne karte.
