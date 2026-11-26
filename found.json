@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583261591",
+   "source": "kleinanzeigen",
+   "title": "AMD Radeon RX 9070 XT Sapphire Nitro+ – Top Zustand + Rechnung",
+   "price": 400.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/amd-radeon-rx-9070-xt-sapphire-nitro-top-zustand-rechnung/3583261591-225-132",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/cc/ccfdba4d-24d7-495d-bd21-863aa1929652?rule=$_59.AUTO",
+   "location": "18442 Wendorf",
+   "watch": "RX 9070 XT",
+   "score": 0,
+   "reasons": "KI ✓ Es wird eine gebrauchte RX 9070 XT angeboten.; 🚩 PayPal Freunde; Account jung (seit 01.09.2026); privat; Versand möglich; ⚠ Preis nur 44% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T17:45:47+00:00"
+  },
+  {
    "key": "kleinanzeigen:3576612715",
    "source": "kleinanzeigen",
    "title": "[NEU] AORUS GeForce RTX 5070 Ti MASTER 16GB OC",
