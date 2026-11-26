@@ -58,3 +58,17 @@ watches:
   ai_hint: Nur die einzelne karte.
   send_suspicious: true
   active: true
+- name: RTX 4080 / 4080 Super
+  query: RTX 4080, RTX 4080 Super
+  sources:
+  - ebay
+  - kleinanzeigen
+  max_price: 800.0
+  ref_price: 1050.0
+  condition: egal
+  buying: egal
+  exclude:
+  - kein käuferschutz
+  ai_hint: Nur die Karte.
+  send_suspicious: true
+  active: true

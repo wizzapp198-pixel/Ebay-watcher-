@@ -29,3 +29,10 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 - Ausschluss: kein käuferschutz
 - KI-Wunsch: Nur die einzelne karte.
 
+## RTX 4080 / 4080 Super (▶️ aktiv)
+- Suche: `RTX 4080, RTX 4080 Super` · Quellen: eBay + Kleinanzeigen
+- Preis: – bis 800 € · Ref.: 1050 €
+- Zustand egal · eBay-Kaufart egal · KA: deutschlandweit · ⚠️ verdächtige senden
+- Ausschluss: kein käuferschutz
+- KI-Wunsch: Nur die Karte.
+
