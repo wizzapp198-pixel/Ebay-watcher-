@@ -3,7 +3,7 @@ name: Watcher
 on:
   schedule:
     # Privates Repo: alle 30 Min. (Gratis-Kontingent 2000 Min./Monat).
-    # Hinweis: GitHub startet Cron-Jobs oft einige Minuten verspätet.
+    # Hinweis: GitHub startet geplante Läufe oft einige Minuten verspätet.
     - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
