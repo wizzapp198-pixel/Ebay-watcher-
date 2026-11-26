@@ -77,7 +77,7 @@ class Watch:
         """Fingerabdruck der Suchparameter je Quelle. Ändert sich der Suchbegriff
         o. Ä., gibt es einen neuen Schlüssel -> stiller Erstlauf (kein Push-Spam)."""
         relevant = {
-            "q": self.query.strip().lower(),
+            "q": ",".join(sorted({q.strip().lower() for q in self.query.split(",") if q.strip()})),
             "min": self.min_price, "max": self.max_price,
             "cond": self.condition,
         }

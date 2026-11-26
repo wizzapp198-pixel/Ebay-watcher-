@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 import re
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 from .config import Settings
 from .http import SourceBlocked, SourceError
@@ -116,9 +116,21 @@ class Runner:
         self.store.prune()
         return st
 
+    @staticmethod
+    def _search_all(src, watch: Watch) -> list[Item]:
+        """Komma im Suchbegriff = mehrere Suchen (ODER), Ergebnisse ohne Doppelte."""
+        queries = list(dict.fromkeys(q.strip().lower() for q in watch.query.split(",") if q.strip()))
+        if len(queries) <= 1:
+            return src.search(watch)
+        merged: dict[str, Item] = {}
+        for q in queries:
+            for it in src.search(replace(watch, query=q)):
+                merged.setdefault(it.key, it)
+        return list(merged.values())
+
     def _run_one(self, src, watch: Watch, st: RunStats, budget: int) -> int:
         skey = watch.search_key(src.name)
-        items = src.search(watch)
+        items = self._search_all(src, watch)
         log.info("%s / %s: %d Treffer", src.name, watch.name, len(items))
 
         if not self.store.has_baseline(skey):

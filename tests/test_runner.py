@@ -106,3 +106,18 @@ def test_push_cap_per_run(settings, store, watch):
     assert len(n.sent) == 2
     r.run([watch])
     assert len(n.sent) == 4
+
+
+def test_comma_means_or_and_dedup(settings, store, watch):
+    seen_queries = []
+
+    class Multi(FakeSource):
+        def search(self, w):
+            seen_queries.append(w.query)
+            return [good_ebay(1), good_ebay(2)] if w.query == "rx 9070 xt" else [good_ebay(2), good_ebay(3)]
+
+    watch.query = "RX 9070 XT , rx 9070 xt, radeon 9070"
+    n = FakeNotifier()
+    st = make(settings, store, n, Multi("ebay")).run([watch])
+    assert seen_queries == ["rx 9070 xt", "radeon 9070"]
+    assert st.baseline == 3

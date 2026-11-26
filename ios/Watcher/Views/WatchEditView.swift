@@ -13,12 +13,16 @@ struct WatchEditView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Suche") {
+                Section {
                     TextField("Name, z. B. iPhone 13", text: $d.name)
                     TextField("Suchbegriff, z. B. iphone 13 128gb", text: $d.query)
                         .textInputAutocapitalization(.never)
                     Toggle("eBay", isOn: $d.ebay)
                     Toggle("Kleinanzeigen", isOn: $d.kleinanzeigen)
+                } header: {
+                    Text("Suche")
+                } footer: {
+                    Text("Mehrere Varianten mit Komma trennen = oder, z. B. „rx 9070 xt, radeon 9070 xt“.")
                 }
 
                 Section {

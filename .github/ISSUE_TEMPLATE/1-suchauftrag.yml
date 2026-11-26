@@ -17,6 +17,7 @@ body:
     id: query
     attributes:
       label: Suchbegriff
+      description: "Mehrere Varianten mit Komma trennen = ODER, z. B. rx 9070 xt, radeon 9070 xt"
       placeholder: "z. B. iphone 13 128gb"
     validations:
       required: true
