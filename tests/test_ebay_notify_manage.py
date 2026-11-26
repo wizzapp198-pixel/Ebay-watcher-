@@ -166,6 +166,7 @@ def manage(tmp_path, monkeypatch):
     import scripts.manage_watches as m
     monkeypatch.setattr(m, "WATCHES", tmp_path / "watches.yaml")
     monkeypatch.setattr(m, "LISTING", tmp_path / "WATCHES.md")
+    monkeypatch.setattr(m, "JSON_OUT", tmp_path / "watches.json")
     return m
 
 
@@ -179,6 +180,7 @@ def test_form_add_change_delete(manage):
     out = manage.handle("[Suchauftrag] x", FORM.replace("- [ ] Suchauftrag pausieren", "- [X] Suchauftrag pausieren"))
     assert "geändert" in out and manage.load()[0]["active"] is False and len(manage.load()) == 1
     assert "pausiert" in manage.LISTING.read_text(encoding="utf-8")
+    assert json.loads(manage.JSON_OUT.read_text(encoding="utf-8"))["watches"][0]["active"] is False
     out = manage.handle("[Löschen] iPhone", "### Name des Suchauftrags\n\niphone 13\n")
     assert "gelöscht" in out and manage.load() == []
 

@@ -6,6 +6,7 @@ Exit 1 bei ungültiger Eingabe.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -19,6 +20,7 @@ from watcher.config import parse_watch  # noqa: E402
 
 WATCHES = ROOT / "watches.yaml"
 LISTING = ROOT / "WATCHES.md"
+JSON_OUT = ROOT / "watches.json"  # für die iOS- und Web-App
 EMPTY = {"", "_no response_", "none"}
 
 LABELS = {
@@ -145,6 +147,7 @@ def save(watches: list[dict]) -> None:
     WATCHES.write_text(header + yaml.safe_dump({"watches": watches}, allow_unicode=True, sort_keys=False),
                        encoding="utf-8")
     LISTING.write_text(render_listing(watches), encoding="utf-8")
+    JSON_OUT.write_text(json.dumps({"watches": watches}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def _eur(v):
