@@ -1,6 +1,36 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583309141",
+   "source": "kleinanzeigen",
+   "title": "ASUS TUF Gaming GeForce RTX 4070 Ti Super 16GB",
+   "price": 410.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/asus-tuf-gaming-geforce-rtx-4070-ti-super-16gb/3583309141-225-3100",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/d9/d90e8d49-8633-47a6-82c9-6eeddff56ce3?rule=$_59.AUTO",
+   "location": "26384 Wilhelmshaven",
+   "watch": "RTX 4070 Ti Super",
+   "score": 57,
+   "reasons": "KI ✓ Es wird eine gebrauchte RTX 4070 Ti Super Grafikkarte angeboten.; privat; Versand möglich; Preis 51% vom Ref.-Preis (auffällig)",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T18:46:36+00:00"
+  },
+  {
+   "key": "kleinanzeigen:3583308819",
+   "source": "kleinanzeigen",
+   "title": "NVIDIA GeForce RTX 5070 Ti 16GB GDDR7 Grafikkarte",
+   "price": 700.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/nvidia-geforce-rtx-5070-ti-16gb-gddr7-grafikkarte/3583308819-225-1125",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/5d/5d446961-8543-4c58-ade2-fa8c3c577ae5?rule=$_59.AUTO",
+   "location": "47533 Kleve",
+   "watch": "RTX 5070 Ti",
+   "score": 67,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird direkt und neu angeboten.; aktiv seit 19.11.2021; privat; Versand möglich; Preis 61% vom Ref.-Preis (auffällig)",
+   "kind": "bargain",
+   "found_at": "2026-11-26T18:46:13+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583261591",
    "source": "kleinanzeigen",
    "title": "AMD Radeon RX 9070 XT Sapphire Nitro+ – Top Zustand + Rechnung",
