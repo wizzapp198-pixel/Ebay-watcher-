@@ -9,8 +9,3 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 - Ausschluss: kein käuferschutz
 - KI-Wunsch: NUR DIE KARTE kein PC, keine Suche , kein Ankauf, nur die Karte.
 
-## Fahrrad (▶️ aktiv)
-- Suche: `Fahrrad` · Quellen: eBay + Kleinanzeigen
-- Preis: – bis 1200 € · Ref.: –
-- Zustand neu · eBay-Kaufart egal · KA: deutschlandweit · ⚠️ verdächtige senden
-
