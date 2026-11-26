@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3580418608",
+   "source": "kleinanzeigen",
+   "title": "BLACK FRIDAY ANGEBOT – PROPHETE E-BIKE STACK 1.8",
+   "price": 800.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/black-friday-angebot-prophete-e-bike-stack-1-8/3580418608-217-2096",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/e4/e4a7104d-631e-4239-a84f-01590585c24e?rule=$_59.AUTO",
+   "location": "40229 Eller",
+   "watch": "Fahrrad",
+   "score": 60,
+   "reasons": "privat; Hinweis: Telefonnummer im Text",
+   "kind": "normal",
+   "found_at": "2026-11-26T14:01:58+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583036132",
    "source": "kleinanzeigen",
    "title": "Bulls Copperhead FSX 2021 MTB Fully 29 Zoll RockShox Shimano L",
