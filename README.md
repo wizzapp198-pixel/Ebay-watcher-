@@ -130,12 +130,44 @@ deaktivieren (Actions → Watcher → ⋯ → Disable workflow), sonst kommen Pu
 
 ---
 
+## Steuerung per App (iPhone) und Web-App
+
+Beide Apps können: Suchaufträge ansehen, anlegen, ändern, pausieren und löschen, **Jetzt suchen**,
+**Test-Push** und die letzten Läufe anzeigen. Änderungen laufen intern über dasselbe Issue-Formular
+(gleiche Prüfung, gleicher Bot), die App zeigt dir die Antwort des Bots direkt an.
+
+### Zugangsschlüssel (Token) – einmalig, für beide Apps
+1. Im Handy-Browser: <https://github.com/settings/personal-access-tokens/new>
+2. Name: `Watcher App`, Expiration: 1 Jahr (oder „No expiration“).
+3. **Repository access → Only select repositories →** `Ebay-watcher-`
+4. **Permissions → Repository permissions:**
+   **Actions:** Read and write · **Contents:** Read-only · **Issues:** Read and write (Metadata stellt GitHub automatisch ein).
+5. **Generate token**, kopieren und in der App einfügen. Nicht im Chat oder irgendwo anders speichern.
+
+Der Token wird in der iOS-App im Schlüsselbund gespeichert, in der Web-App nur im Browser dieses Geräts,
+und nur an `api.github.com` gesendet.
+
+### iOS-App (.ipa zum Sideloaden)
+* Download: Repo → **Releases → „Watcher iOS-App (neuester Build)“ → `Watcher.ipa`**
+  (wird bei jeder Änderung unter `ios/` automatisch neu gebaut).
+* Die IPA ist unsigniert. AltStore, SideStore, Sideloadly, Feather & Co. signieren sie beim Installieren mit deiner Apple-ID.
+* Mit kostenloser Apple-ID läuft die Signatur nach **7 Tagen** ab → in AltStore/SideStore „Refresh“.
+  Vergessen? Einfach die Web-App nutzen, die läuft immer.
+
+### Web-App (läuft immer, kein Refresh nötig)
+* Liegt in `webapp/`, gehostet über GitHub Pages im öffentlichen Mini-Repo `watcher-app`
+  (enthält nur den App-Code – keine Suchaufträge, keine Keys).
+* In Safari öffnen → **Teilen → Zum Home-Bildschirm**: sieht dann aus wie eine App.
+
+---
+
 ## Limits & Kosten
 
 * **eBay Browse API:** ca. 5000 Aufrufe/Tag. Pro Lauf 1 Aufruf je eBay-Suchauftrag (+1 Token).
   Alle 30 Min. = 48 Läufe/Tag → **10 Aufträge ≈ 480 Aufrufe/Tag**, bis ~80 Aufträge unkritisch.
   Dauerbetrieb alle 5 Min. = 288 Läufe → max. ~13 eBay-Aufträge. Der Log zeigt die Hochrechnung bei jedem Lauf.
 * **GitHub Actions (privates Repo):** 2000 Gratis-Minuten/Monat, jeder Lauf zählt aufgerundet als ≥ 1 Minute.
+  Ein iOS-App-Build (macOS, zählt 10-fach) kostet ca. 10–20 Minuten und läuft nur bei Änderungen unter `ios/`.
   48 Läufe/Tag × 30 Tage ≈ 1440 Min. → passt. Nicht schneller als 30 Min. stellen (20 Min. ≈ 2160 Min. = zu viel).
   Bei einem **öffentlichen** Repo sind Minuten unbegrenzt – dann kannst du in `.github/workflows/watch.yml`
   `*/30` auf `*/5` ändern (Suchliste wäre dann öffentlich sichtbar, Keys bleiben geheim).
