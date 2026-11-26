@@ -31,7 +31,7 @@ class FakeHttp:
     def post(self, url, headers=None, json=None, timeout=None):
         self.calls.append((url, headers, json))
         body = {"choices": [{"message": {"content": __import__("json").dumps(self.answers.pop(0))}}]} if self.answers else {}
-        return SimpleNamespace(status_code=self.status, json=lambda: body, text="")
+        return SimpleNamespace(status_code=self.status, json=lambda: body, text="", headers={})
 
 
 def run_twice(settings, store, watch, items, ai):

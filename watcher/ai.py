@@ -210,10 +210,14 @@ class AIChecker:
             log.warning("KI (GitHub Models) HTTP %s: %s", r.status_code, r.text[:200])
             return None
         try:
-            return r.json()["choices"][0]["message"]["content"]
+            content = r.json()["choices"][0]["message"]["content"]
         except (ValueError, KeyError, IndexError, TypeError):
-            log.warning("KI (GitHub Models): unerwartete Antwort")
+            content = None
+        if not isinstance(content, str) or not content.strip():
+            log.warning("KI (GitHub Models): unerwartete Antwort (HTTP %s, %s): %s",
+                        r.status_code, r.headers.get("content-type"), r.text[:400])
             return None
+        return content
 
     def _ask_anthropic(self, prompt: str) -> str | None:
         import anthropic
