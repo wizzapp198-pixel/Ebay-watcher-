@@ -37,6 +37,23 @@
       "ai_hint": "Nur die Grafikarte",
       "send_suspicious": true,
       "active": true
+    },
+    {
+      "name": "RX 7900 XTX",
+      "query": "7900 XTX, Radeon 7900 XTX, RX 7900 XTX",
+      "sources": [
+        "ebay",
+        "kleinanzeigen"
+      ],
+      "max_price": 650.0,
+      "ref_price": 800.0,
+      "condition": "egal",
+      "buying": "egal",
+      "exclude": [
+        "kein käuferschutz"
+      ],
+      "send_suspicious": true,
+      "active": true
     }
   ]
 }
