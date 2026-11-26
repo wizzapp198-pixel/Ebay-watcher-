@@ -1,6 +1,36 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583423417",
+   "source": "kleinanzeigen",
+   "title": "Gigabyte GeForce RTX 5070 Ti 16GB Windforce SSF Grafikkarte",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-geforce-rtx-5070-ti-16gb-windforce-ssf-grafikkarte/3583423417-225-10594",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/29/29bb3768-4e26-47e9-8caa-5113d73ff7fe?rule=$_59.AUTO",
+   "location": "24321 Lütjenburg",
+   "watch": "RTX 5070 Ti",
+   "score": 12,
+   "reasons": "KI ✓ Das Angebot ist eine passende Grafikkarte und wird verkauft.; 🚩 PayPal Freunde; TOP Zufriedenheit; privat; Versand möglich; ⚠ Preis nur 39% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T21:31:32+00:00"
+  },
+  {
+   "key": "kleinanzeigen:3583421359",
+   "source": "kleinanzeigen",
+   "title": "Sapphire Nitro+ AMD Radeon RX 9070 XT 16GB oc",
+   "price": 750.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/sapphire-nitro-amd-radeon-rx-9070-xt-16gb-oc/3583421359-225-8473",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/35/35c840c5-fa92-45ca-9693-729f93a97b6c?rule=$_59.AUTO",
+   "location": "71397 Leutenbach",
+   "watch": "RX 9070 XT",
+   "score": 45,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird direkt und einzeln zum Verkauf angeboten.; Account neu (seit 26.11.2026); privat; Preis 83% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T21:30:59+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583344023",
    "source": "kleinanzeigen",
    "title": "ASUS TUF RTX 4080 SUPER 16GB GDDR6X OC Edition Gaming Grafikkarte",
