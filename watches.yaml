@@ -12,7 +12,7 @@ watches:
   buying: egal
   exclude:
   - kein käuferschutz
-  ai_hint: NUR DIE KARTE kein Paket.
+  ai_hint: NUR DIE KARTE kein PC, keine Suche , kein Ankauf, nur die Karte.
   min_trust: 70
   send_suspicious: true
   active: true
