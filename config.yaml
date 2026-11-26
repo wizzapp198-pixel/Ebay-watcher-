@@ -19,6 +19,17 @@ exclude:
   - icloud
   - suche
   - tausche
+  - ankauf
+  - gesuch
+
+# KI-Prüfung mit Claude (nur aktiv, wenn das Secret ANTHROPIC_API_KEY gesetzt ist).
+# Prüft nur Angebote, die alle anderen Filter bestanden haben: Passt es genau zum Auftrag?
+# Ist es ein Verkauf (kein Gesuch/Ankauf/Zubehör/Spielzeug)?
+ai:
+  enabled: true
+  model: claude-opus-5-5      # günstiger: claude-haiku-5-5 (ca. 40x billiger, etwas ungenauer)
+  effort: low
+  max_checks_per_run: 25      # Kostenbremse pro Lauf
 
 sources:
   ebay:

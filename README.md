@@ -96,6 +96,34 @@ Unter Mindest-Vertrauen (Standard 60) wird nicht gepusht – außer „Verdächt
 
 ---
 
+## KI-Prüfung (optional, empfohlen)
+
+Filter und Ausschlusswörter fangen nicht alles ab: Spielzeugrad statt Fahrrad, Komplett-PC statt
+Grafikkarte, „Suche RX 9070 XT“ oder „Ankauf aller Grafikkarten“. Deshalb kann Claude (KI von Anthropic)
+jedes Angebot prüfen, **bevor** es gepusht wird:
+
+* Ist es **genau der gesuchte Artikel** (kein Zubehör, kein Spielzeug, kein anderes Modell, kein Komplettgerät)?
+* Ist es ein **Verkauf** (kein Gesuch, kein Ankauf, keine Dienstleistung)?
+
+Die Begründung steht im Push („KI ✓ …“). Pro Suchauftrag kannst du im Feld **„Genauer Wunsch“** beschreiben,
+was du genau willst, z. B. *„Nur die einzelne Karte RX 9070 XT, nicht die non-XT, kein Komplett-PC“*.
+Auch ohne KI werden Kleinanzeigen-Gesuche (laut Anzeigentyp) und Titel mit „Ankauf“/„Gesuch“/„Suche“ aussortiert.
+
+**Einrichten:**
+1. <https://console.anthropic.com> → Konto anlegen → **Billing**: Guthaben aufladen (Prepaid, kein Abo).
+2. **API Keys → Create Key** → kopieren.
+3. GitHub: **Settings → Secrets and variables → Actions → New repository secret**:
+   Name `ANTHROPIC_API_KEY`, Wert = der Key.
+
+Ohne Key läuft alles wie bisher, nur ohne KI-Prüfung.
+
+**Kosten:** Geprüft werden nur Angebote, die alle anderen Filter bestanden haben (max. 25 pro Lauf).
+Standard ist das genaueste Modell `claude-opus-5-5` (ca. 1 Cent pro Prüfung). Wer sparen will,
+stellt in `config.yaml` bei `ai: model:` auf `claude-haiku-5-5` um (Bruchteil eines Cents, etwas ungenauer).
+In der Anthropic-Console kannst du ein monatliches Ausgabenlimit setzen.
+
+---
+
 ## Kleinanzeigen: Cloud vs. Zuhause
 
 Kleinanzeigen hat **keine offizielle API**; der Watcher liest die öffentlichen Suchseiten (neueste zuerst) mit

@@ -34,7 +34,7 @@ def test_parse_details_fixture():
     assert s.active_since == "14.11.2026"
     assert "TOP Zufriedenheit" in s.badges and "Zuverlässig" in s.badges
     assert s.commercial is False and s.other_ads == 2 and s.id == "168301492"
-    assert it.condition == "Sehr Gut"
+    assert it.condition == "Sehr Gut" and it.offer_type == "Angebot"
     assert "Akkukappazität" in it.description
 
 

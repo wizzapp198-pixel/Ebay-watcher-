@@ -40,6 +40,7 @@ class Item:
     shipping: Optional[bool] = None       # Versand möglich
     secure_payment: Optional[bool] = None  # Kleinanzeigen "Direkt kaufen"/Sicher bezahlen
     price_negotiable: bool = False
+    offer_type: Optional[str] = None       # Kleinanzeigen: "Angebot" / "Gesuch"
     seller: Seller = field(default_factory=Seller)
     details_loaded: bool = False
 
@@ -72,6 +73,7 @@ class Watch:
     min_trust: Optional[int] = None
     send_suspicious: Optional[bool] = None
     active: bool = True
+    ai_hint: Optional[str] = None    # genauer Wunsch für die KI-Prüfung
 
     def search_key(self, source: str) -> str:
         """Fingerabdruck der Suchparameter je Quelle. Ändert sich der Suchbegriff

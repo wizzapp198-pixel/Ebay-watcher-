@@ -36,6 +36,7 @@ LABELS = {
     "Umkreis (nur Kleinanzeigen)": "radius",
     "Versand": "shipping",
     "Ausschlusswörter": "exclude",
+    "Genauer Wunsch (für die KI-Prüfung)": "ai_hint",
     "Mindest-Vertrauen": "min_trust",
     "Optionen": "options",
 }
@@ -124,6 +125,9 @@ def form_to_watch(sec: dict) -> dict:
     excl = val(sec.get("exclude"))
     if excl:
         w["exclude"] = [e.strip().lower() for e in excl.split(",") if e.strip()][:30]
+    hint = val(sec.get("ai_hint"))
+    if hint:
+        w["ai_hint"] = " ".join(hint.split())[:500]
     mt = val(sec.get("min_trust"))
     if mt and re.fullmatch(r"\d+", mt):
         w["min_trust"] = int(mt)
@@ -179,6 +183,8 @@ def render_listing(watches: list[dict]) -> str:
         lines.append("- " + " · ".join(extra))
         if w.get("exclude"):
             lines.append("- Ausschluss: " + ", ".join(w["exclude"]))
+        if w.get("ai_hint"):
+            lines.append("- KI-Wunsch: " + w["ai_hint"])
         lines.append("")
     return "\n".join(lines) + "\n"
 

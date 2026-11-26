@@ -127,6 +127,9 @@ def parse_details(html: str, item: Item) -> Item:
         label = li.get_text(" ", strip=True).replace(val.get_text(" ", strip=True), "").strip() if val else ""
         if label.lower().startswith("zustand") and val:
             item.condition = val.get_text(" ", strip=True)
+    m = re.search(r'"Angebotstyp"\s*:\s*"([^"]+)"', html)
+    if m:
+        item.offer_type = m.group(1)
     box = soup.select_one("#viewad-profile-box") or soup.select_one("#viewad-contact")
     s = item.seller or Seller()
     if box:

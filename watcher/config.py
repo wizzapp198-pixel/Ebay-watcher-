@@ -13,7 +13,7 @@ from .models import Watch
 ROOT = Path(__file__).resolve().parent.parent
 
 DEFAULT_EXCLUDE = ["defekt", "bastler", "ersatzteil", "kaputt", "für teile",
-                   "ohne funktion", "suche", "tausche"]
+                   "ohne funktion", "suche", "tausche", "ankauf", "gesuch"]
 
 
 @dataclass
@@ -32,6 +32,7 @@ class Settings:
     db_path: str = "seen.db"
     loop_interval: int = 300
     warn_interval_minutes: int = 60
+    ai: dict = field(default_factory=dict)
 
     def source_enabled(self, name: str) -> bool:
         disabled = {s.strip().lower() for s in os.environ.get("DISABLED_SOURCES", "").split(",") if s.strip()}
@@ -84,6 +85,7 @@ def parse_watch(d: dict) -> Watch:
         min_trust=int(d["min_trust"]) if d.get("min_trust") not in (None, "") else None,
         send_suspicious=d.get("send_suspicious"),
         active=bool(d.get("active", True)),
+        ai_hint=str(d["ai_hint"])[:500] if d.get("ai_hint") else None,
     )
 
 
@@ -106,6 +108,7 @@ def load_settings(path: Path) -> Settings:
     if "exclude" in data:
         s.exclude = [e.lower() for e in data["exclude"] or []]
     s.sources = data.get("sources") or {}
+    s.ai = data.get("ai") or {}
     s.ntfy_topic = os.environ.get("NTFY_TOPIC") or None
     s.ntfy_token = os.environ.get("NTFY_TOKEN") or None
     s.ntfy_server = os.environ.get("NTFY_SERVER") or s.ntfy_server

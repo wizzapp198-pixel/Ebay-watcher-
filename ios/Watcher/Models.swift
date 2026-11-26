@@ -18,6 +18,7 @@ struct Watch: Codable, Identifiable, Equatable {
     var minTrust: Int?
     var sendSuspicious: Bool?
     var active: Bool?
+    var aiHint: String?
 
     var isActive: Bool { active ?? true }
 
@@ -57,6 +58,7 @@ struct WatchDraft: Equatable {
     var minTrust = 0              // 0 = Standard
     var sendSuspicious = false
     var active = true
+    var aiHint = ""
 
     init() {}
 
@@ -77,6 +79,7 @@ struct WatchDraft: Equatable {
         minTrust = w.minTrust ?? 0
         sendSuspicious = w.sendSuspicious ?? false
         active = w.isActive
+        aiHint = w.aiHint ?? ""
     }
 
     var isValid: Bool {
@@ -106,6 +109,8 @@ struct WatchDraft: Equatable {
         s += field("Umkreis (nur Kleinanzeigen)", radiusText)
         s += "### Versand\n\n\(box(shippingOnly, "Nur Angebote mit Versand (Kleinanzeigen)"))\n\n"
         s += field("Ausschlusswörter", exclude)
+        s += field("Genauer Wunsch (für die KI-Prüfung)",
+                   aiHint.components(separatedBy: .whitespacesAndNewlines).filter { !$0.isEmpty }.joined(separator: " "))
         s += field("Mindest-Vertrauen", trustText)
         s += "### Optionen\n\n\(box(sendSuspicious, "Verdächtige Angebote trotzdem senden (⚠️)"))\n\(box(!active, "Suchauftrag pausieren"))\n"
         return s

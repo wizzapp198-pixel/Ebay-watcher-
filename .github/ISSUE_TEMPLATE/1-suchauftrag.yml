@@ -28,6 +28,12 @@ body:
       options:
         - label: eBay
         - label: Kleinanzeigen
+  - type: textarea
+    id: ai_hint
+    attributes:
+      label: Genauer Wunsch (für die KI-Prüfung)
+      description: "Optional. Was genau soll es sein, was nicht? Die KI sortiert unpassende Angebote, Gesuche und Ankauf aus."
+      placeholder: "z. B. Nur die einzelne Grafikkarte RX 9070 XT (nicht die non-XT), kein Komplett-PC."
   - type: input
     id: min_price
     attributes:

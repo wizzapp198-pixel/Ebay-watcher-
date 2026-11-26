@@ -6,6 +6,7 @@ import re
 import time
 from dataclasses import dataclass, field, replace
 
+from .ai import AIChecker
 from .config import Settings
 from .http import SourceBlocked, SourceError
 from .models import SOURCE_LABELS, Item, Watch
@@ -25,6 +26,8 @@ class RunStats:
     failed_push: int = 0
     errors: dict = field(default_factory=dict)
     ebay_calls: int = 0
+    ai_checks: int = 0
+    ai_rejected: int = 0
 
 
 def _has_word(text: str, words: list[str]) -> str | None:
@@ -61,8 +64,10 @@ def condition_ok(item: Item, watch: Watch) -> bool:
 
 
 class Runner:
-    def __init__(self, settings: Settings, store: Store, notifier: Notifier, sources: dict | None = None):
+    def __init__(self, settings: Settings, store: Store, notifier: Notifier, sources: dict | None = None,
+                 ai: AIChecker | None = None):
         self.settings = settings
+        self.ai = ai if ai is not None else AIChecker(settings)
         self.store = store
         self.notifier = notifier
         if sources is None:
@@ -113,6 +118,7 @@ class Runner:
                     self._warn_source(name, e)
                     break
             st.ebay_calls += getattr(src, "calls", 0)
+        st.ai_checks = self.ai.checks
         self.store.prune()
         return st
 
@@ -167,7 +173,21 @@ class Runner:
                 self.store.mark_seen(it.key, it.title)
                 st.skipped += 1
                 continue
+            if it.offer_type and it.offer_type.lower() != "angebot":
+                log.info("  - %s: kein Angebot (%s)", it.title[:60], it.offer_type)
+                self.store.mark_seen(it.key, it.title)
+                st.skipped += 1
+                continue
+            verdict = self.ai.check(it, watch)
+            if verdict is not None and not verdict.ok:
+                log.info("  - %s: KI aussortiert – %s", it.title[:60], verdict.reason)
+                self.store.mark_seen(it.key, it.title)
+                st.skipped += 1
+                st.ai_rejected += 1
+                continue
             sc = score_item(it, watch, min_trust)
+            if verdict is not None:
+                sc.reasons.insert(0, f"KI ✓ {verdict.reason}")
             kind = "normal"
             if sc.value < min_trust:
                 if not send_susp:

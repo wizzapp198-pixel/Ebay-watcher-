@@ -17,6 +17,9 @@ struct WatchEditView: View {
                     TextField("Name, z. B. iPhone 13", text: $d.name)
                     TextField("Suchbegriff, z. B. iphone 13 128gb", text: $d.query)
                         .textInputAutocapitalization(.never)
+                    TextField("Genauer Wunsch für die KI (optional), z. B. „Nur die einzelne Karte, kein Komplett-PC“",
+                              text: $d.aiHint, axis: .vertical)
+                        .lineLimit(2...5)
                     Toggle("eBay", isOn: $d.ebay)
                     Toggle("Kleinanzeigen", isOn: $d.kleinanzeigen)
                 } header: {

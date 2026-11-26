@@ -50,6 +50,7 @@ jobs:
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DISABLED_SOURCES: ${{ vars.DISABLED_SOURCES }}
           TEST_PUSH: ${{ inputs.test_push }}
           PROBE: ${{ inputs.probe }}

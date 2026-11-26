@@ -91,8 +91,10 @@ def main(argv=None) -> int:
                          ebay_budget_check(watches, args.schedule_interval or interval))
             runner = Runner(settings, store, notifier)
             st = runner.run(watches)
-            logging.info("Fertig: %d gepusht, %d Erstlauf gemerkt, %d aussortiert, %d Push-Fehler, Fehler: %s",
-                         st.pushed, st.baseline, st.skipped, st.failed_push, st.errors or "keine")
+            logging.info("Fertig: %d gepusht, %d Erstlauf gemerkt, %d aussortiert (davon %d durch KI, "
+                         "%d KI-Prüfungen), %d Push-Fehler, Fehler: %s",
+                         st.pushed, st.baseline, st.skipped, st.ai_rejected, st.ai_checks,
+                         st.failed_push, st.errors or "keine")
             if not args.loop:
                 break
             time.sleep(interval)
