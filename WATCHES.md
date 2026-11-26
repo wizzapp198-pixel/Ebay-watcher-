@@ -8,3 +8,8 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 - Zustand gebraucht · eBay-Kaufart egal · KA: deutschlandweit · min. Vertrauen 70 · ⚠️ verdächtige senden
 - Ausschluss: kein käuferschutz
 
+## Fahrrad (▶️ aktiv)
+- Suche: `Fahrrad` · Quellen: eBay + Kleinanzeigen
+- Preis: – bis 1200 € · Ref.: –
+- Zustand neu · eBay-Kaufart egal · KA: deutschlandweit · ⚠️ verdächtige senden
+

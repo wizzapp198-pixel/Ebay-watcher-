@@ -17,6 +17,19 @@
       "min_trust": 70,
       "send_suspicious": true,
       "active": true
+    },
+    {
+      "name": "Fahrrad",
+      "query": "Fahrrad",
+      "sources": [
+        "ebay",
+        "kleinanzeigen"
+      ],
+      "max_price": 1200.0,
+      "condition": "neu",
+      "buying": "egal",
+      "send_suspicious": true,
+      "active": true
     }
   ]
 }
