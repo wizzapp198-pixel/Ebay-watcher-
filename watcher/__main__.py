@@ -22,12 +22,36 @@ def ebay_budget_check(watches, interval_s: int) -> str:
     return f"eBay-Aufrufe/Tag ≈ {per_day} bei {n} eBay-Suchaufträgen (Limit ~{EBAY_DAILY_LIMIT}) → {status}"
 
 
+def probe(settings) -> int:
+    from .models import Watch
+    from .sources import REGISTRY
+    w = Watch(name="Probe", query="fahrrad", plz="06773", radius=50)
+    for name, cls in REGISTRY.items():
+        if not settings.source_enabled(name):
+            logging.info("PROBE %s: abgeschaltet", name)
+            continue
+        src = cls(settings)
+        ok, why = src.configured()
+        if not ok:
+            logging.info("PROBE %s: nicht konfiguriert (%s)", name, why)
+            continue
+        try:
+            items = src.search(w)
+            logging.info("PROBE %s: OK, %d Treffer, z. B. %s", name, len(items),
+                         items[0].title[:60] if items else "-")
+        except Exception as e:  # noqa: BLE001
+            logging.error("PROBE %s: FEHLER %s", name, e)
+    return 0
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="watcher")
     ap.add_argument("--once", action="store_true", help="ein Durchlauf (Standard)")
     ap.add_argument("--loop", action="store_true", help="Dauerbetrieb")
     ap.add_argument("--interval", type=int, help="Sekunden zwischen Läufen im Dauerbetrieb")
     ap.add_argument("--test-push", action="store_true", help="Test-Nachricht senden")
+    ap.add_argument("--probe", action="store_true",
+                    help="Diagnose: je eine Testsuche pro Quelle, nichts pushen/speichern")
     ap.add_argument("--sources", help="nur diese Quellen, z. B. kleinanzeigen (Komma-getrennt)")
     ap.add_argument("--config", default=str(ROOT / "config.yaml"))
     ap.add_argument("--watches", default=str(ROOT / "watches.yaml"))
@@ -54,6 +78,9 @@ def main(argv=None) -> int:
         except PushError as e:
             logging.error("Test-Push fehlgeschlagen: %s", e)
             return 2
+
+    if args.probe:
+        return probe(settings)
 
     interval = args.interval or settings.loop_interval
     store = Store(settings.db_path)

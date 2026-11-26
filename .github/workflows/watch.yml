@@ -11,6 +11,10 @@ on:
         description: "Test-Push senden"
         type: boolean
         default: false
+      probe:
+        description: "Nur Diagnose (Quellen testen, nichts pushen)"
+        type: boolean
+        default: false
 
 concurrency:
   group: watcher
@@ -48,9 +52,11 @@ jobs:
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           DISABLED_SOURCES: ${{ vars.DISABLED_SOURCES }}
           TEST_PUSH: ${{ inputs.test_push }}
+          PROBE: ${{ inputs.probe }}
         run: |
           ARGS="--once --schedule-interval 1800"
           if [ "$TEST_PUSH" = "true" ]; then ARGS="$ARGS --test-push"; fi
+          if [ "$PROBE" = "true" ]; then ARGS="$ARGS --probe"; fi
           python -m watcher $ARGS
 
       - name: Zustand speichern
