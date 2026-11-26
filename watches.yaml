@@ -1,3 +1,20 @@
 # Wird automatisch über das Issue-Formular "Suchauftrag anlegen/ändern" gepflegt.
 # Nicht von Hand bearbeiten nötig.
-watches: []
+watches:
+- name: Beispiel PS5
+  query: ps5 konsole
+  sources:
+  - ebay
+  - kleinanzeigen
+  min_price: 150.0
+  max_price: 400.0
+  ref_price: 380.0
+  condition: gebraucht
+  buying: sofort
+  plz: '06773'
+  radius: 50
+  exclude:
+  - controller
+  - spiel
+  - hülle
+  active: true
