@@ -72,3 +72,17 @@ watches:
   ai_hint: Nur die Karte.
   send_suspicious: true
   active: true
+- name: RTX 4070 Ti Super
+  query: RTX 4070 Ti Super
+  sources:
+  - ebay
+  - kleinanzeigen
+  max_price: 600.0
+  ref_price: 800.0
+  condition: egal
+  buying: egal
+  exclude:
+  - kein käuferschutz
+  ai_hint: Nur die Karte.
+  send_suspicious: true
+  active: true
