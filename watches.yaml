@@ -1,3 +1,17 @@
 # Wird automatisch über das Issue-Formular "Suchauftrag anlegen/ändern" gepflegt.
 # Nicht von Hand bearbeiten nötig.
-watches: []
+watches:
+- name: RX 9070 XT
+  query: RX9070 XT
+  sources:
+  - ebay
+  - kleinanzeigen
+  max_price: 800.0
+  ref_price: 900.0
+  condition: gebraucht
+  buying: egal
+  exclude:
+  - kein käuferschutz
+  min_trust: 70
+  send_suspicious: true
+  active: true
