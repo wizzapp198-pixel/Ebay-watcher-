@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583102814",
+   "source": "kleinanzeigen",
+   "title": "PowerColor Hellhound AMD Radeon RX 9070 XT, 16GB, Garantie, OVP",
+   "price": 470.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/powercolor-hellhound-amd-radeon-rx-9070-xt-16gb-garantie-ovp/3583102814-225-27093",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/04/040807a9-01ad-4327-911c-85ab6d573a9e?rule=$_59.AUTO",
+   "location": "99759 Münchenlohra",
+   "watch": "RX 9070 XT",
+   "score": 82,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird einzeln zum Verkauf angeboten.; aktiv seit 10.09.2015; TOP Zufriedenheit, Freundlich; privat; 2 Anzeigen online; Versand möglich; Preis 52% vom Ref.-Preis (auffällig)",
+   "kind": "bargain",
+   "found_at": "2026-11-26T14:54:20+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583074767",
    "source": "kleinanzeigen",
    "title": "Sapphire Pulse Radeon RX 9070 XT 16GB – Sehr guter Zustand + Rech",
