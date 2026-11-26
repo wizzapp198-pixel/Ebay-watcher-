@@ -109,18 +109,17 @@ Die Begründung steht im Push („KI ✓ …“). Pro Suchauftrag kannst du im F
 was du genau willst, z. B. *„Nur die einzelne Karte RX 9070 XT, nicht die non-XT, kein Komplett-PC“*.
 Auch ohne KI werden Kleinanzeigen-Gesuche (laut Anzeigentyp) und Titel mit „Ankauf“/„Gesuch“/„Suche“ aussortiert.
 
-**Einrichten:**
-1. <https://console.anthropic.com> → Konto anlegen → **Billing**: Guthaben aufladen (Prepaid, kein Abo).
-2. **API Keys → Create Key** → kopieren.
+**Einrichten (kostenlos mit Google Gemini):**
+1. Im Handy-Browser <https://aistudio.google.com/apikey> öffnen, mit Google-Konto anmelden.
+2. **Create API key** (bzw. „API-Schlüssel erstellen“) → Projekt wählen oder neu anlegen → Key kopieren.
 3. GitHub: **Settings → Secrets and variables → Actions → New repository secret**:
-   Name `ANTHROPIC_API_KEY`, Wert = der Key.
+   Name `GEMINI_API_KEY`, Wert = der Key.
 
-Ohne Key läuft alles wie bisher, nur ohne KI-Prüfung.
+Gratis-Stufe: mit Tageslimit; Google darf Eingaben im Gratis-Tarif zur Verbesserung seiner Produkte nutzen
+(es werden nur öffentliche Anzeigentexte geschickt). Ist das Limit erreicht, gehen Angebote ungeprüft durch.
 
-**Kosten:** Geprüft werden nur Angebote, die alle anderen Filter bestanden haben (max. 25 pro Lauf).
-Standard ist das genaueste Modell `claude-opus-5-5` (ca. 1 Cent pro Prüfung). Wer sparen will,
-stellt in `config.yaml` bei `ai: model:` auf `claude-haiku-5-5` um (Bruchteil eines Cents, etwas ungenauer).
-In der Anthropic-Console kannst du ein monatliches Ausgabenlimit setzen.
+**Alternative Claude (kostenpflichtig):** Secret `ANTHROPIC_API_KEY` (console.anthropic.com) – hat Vorrang vor Gemini.
+Ohne Key läuft alles wie bisher, nur ohne KI-Prüfung. Hinweis: GitHub Models wurde am 30.07.2026 eingestellt.
 
 ---
 
