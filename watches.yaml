@@ -2,7 +2,7 @@
 # Nicht von Hand bearbeiten nötig.
 watches:
 - name: RX 9070 XT
-  query: RX9070 XT
+  query: RX 9070 XT , rx 9070 xt
   sources:
   - ebay
   - kleinanzeigen
