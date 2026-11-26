@@ -1,0 +1,95 @@
+name: "➕ Suchauftrag anlegen / ändern"
+description: "Neuen Suchauftrag anlegen. Gleicher Name = bestehenden Auftrag überschreiben."
+title: "[Suchauftrag] "
+body:
+  - type: markdown
+    attributes:
+      value: "Ausfüllen und unten auf **Create/Submit** tippen. Der Bot trägt den Auftrag ein und schließt das Issue mit einer Bestätigung. Leere Felder = egal."
+  - type: input
+    id: name
+    attributes:
+      label: Name des Suchauftrags
+      description: "Kurzer, eindeutiger Name. Gleicher Name überschreibt einen bestehenden Auftrag."
+      placeholder: "z. B. iPhone 13"
+    validations:
+      required: true
+  - type: input
+    id: query
+    attributes:
+      label: Suchbegriff
+      placeholder: "z. B. iphone 13 128gb"
+    validations:
+      required: true
+  - type: checkboxes
+    id: sources
+    attributes:
+      label: Quellen
+      options:
+        - label: eBay
+        - label: Kleinanzeigen
+  - type: input
+    id: min_price
+    attributes:
+      label: Mindestpreis (€)
+      placeholder: "z. B. 100"
+  - type: input
+    id: max_price
+    attributes:
+      label: Höchstpreis (€)
+      placeholder: "z. B. 350"
+  - type: input
+    id: ref_price
+    attributes:
+      label: Referenzpreis (€)
+      description: "Üblicher Marktpreis. Damit erkennt der Bot Schnäppchen (🔥) und verdächtig billige Angebote."
+      placeholder: "z. B. 320"
+  - type: dropdown
+    id: condition
+    attributes:
+      label: Zustand
+      options: ["egal", "neu", "gebraucht"]
+      default: 0
+  - type: dropdown
+    id: buying
+    attributes:
+      label: Kaufart (nur eBay)
+      options: ["egal", "Sofort-Kaufen", "Auktion"]
+      default: 0
+  - type: input
+    id: plz
+    attributes:
+      label: PLZ (nur Kleinanzeigen)
+      description: "Leer = deutschlandweit. Gräfenhainichen 06773, Bitterfeld-Wolfen 06749."
+      placeholder: "06773"
+  - type: dropdown
+    id: radius
+    attributes:
+      label: Umkreis (nur Kleinanzeigen)
+      options: ["ganz Deutschland", "5 km", "10 km", "20 km", "30 km", "50 km", "100 km", "150 km", "200 km"]
+      default: 0
+  - type: checkboxes
+    id: shipping
+    attributes:
+      label: Versand
+      options:
+        - label: Nur Angebote mit Versand (Kleinanzeigen)
+  - type: input
+    id: exclude
+    attributes:
+      label: Ausschlusswörter
+      description: "Komma-getrennt, zusätzlich zu den globalen (defekt, Bastler, Ersatzteile …)."
+      placeholder: "z. B. hülle, case, mini"
+  - type: dropdown
+    id: min_trust
+    attributes:
+      label: Mindest-Vertrauen
+      description: "Angebote mit niedrigerem Seriositäts-Score werden nicht gemeldet."
+      options: ["Standard (60)", "40", "50", "60", "70", "80"]
+      default: 0
+  - type: checkboxes
+    id: options
+    attributes:
+      label: Optionen
+      options:
+        - label: Verdächtige Angebote trotzdem senden (⚠️)
+        - label: Suchauftrag pausieren

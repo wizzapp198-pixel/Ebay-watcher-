@@ -1,0 +1,61 @@
+name: Watcher
+
+on:
+  schedule:
+    # Privates Repo: alle 30 Min. (Gratis-Kontingent 2000 Min./Monat).
+    # Hinweis: GitHub startet Cron-Jobs oft einige Minuten verspätet.
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      test_push:
+        description: "Test-Push senden"
+        type: boolean
+        default: false
+
+concurrency:
+  group: watcher
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -q -r requirements.txt
+
+      - name: Zustand laden (gesehene Angebote)
+        uses: actions/cache/restore@v4
+        with:
+          path: seen.db
+          key: seen-db-${{ github.run_id }}
+          restore-keys: seen-db-
+
+      - name: Watcher ausführen
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+          DISABLED_SOURCES: ${{ vars.DISABLED_SOURCES }}
+          TEST_PUSH: ${{ inputs.test_push }}
+        run: |
+          ARGS="--once --schedule-interval 1800"
+          if [ "$TEST_PUSH" = "true" ]; then ARGS="$ARGS --test-push"; fi
+          python -m watcher $ARGS
+
+      - name: Zustand speichern
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: seen.db
+          key: seen-db-${{ github.run_id }}

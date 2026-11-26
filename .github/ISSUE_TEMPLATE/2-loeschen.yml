@@ -1,0 +1,14 @@
+name: "🗑️ Suchauftrag löschen"
+description: "Einen Suchauftrag entfernen."
+title: "[Löschen] "
+body:
+  - type: markdown
+    attributes:
+      value: "Die aktuelle Liste steht in **WATCHES.md** im Repo."
+  - type: input
+    id: name
+    attributes:
+      label: Name des Suchauftrags
+      placeholder: "genau wie in der Liste"
+    validations:
+      required: true

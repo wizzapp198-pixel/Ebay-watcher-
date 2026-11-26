@@ -1,0 +1,32 @@
+# Globale Einstellungen (Suchaufträge stehen in watches.yaml und werden per Issue-Formular gepflegt)
+min_trust: 60            # Standard-Mindestvertrauen 0-100
+send_suspicious: false   # true = verdächtige Angebote trotzdem senden (⚠️, niedrige Priorität)
+bargain_percent: 10      # Preis mind. X % unter Referenzpreis + gutes Vertrauen = 🔥 hohe Priorität
+max_pushes_per_run: 8    # Schutz gegen Push-Flut; Rest kommt im nächsten Lauf
+warn_interval_minutes: 60  # Quellen-Störung höchstens 1x pro Stunde melden
+loop_interval: 300       # Dauerbetrieb: Sekunden zwischen Läufen
+ntfy_server: https://ntfy.sh
+
+# Globale Ausschlusswörter (nur im Titel, Treffer am Wortanfang)
+exclude:
+  - defekt
+  - bastler
+  - ersatzteil
+  - kaputt
+  - für teile
+  - ohne funktion
+  - display gebrochen
+  - icloud
+  - suche
+  - tausche
+
+sources:
+  ebay:
+    enabled: true
+    item_location_country: DE   # nur Artikel mit Standort Deutschland (leer = weltweit)
+    delivery_country: DE
+    limit: 50
+  kleinanzeigen:
+    enabled: true     # Abschalten: false (oder Repo-Variable DISABLED_SOURCES=kleinanzeigen)
+    min_delay: 4      # Sekunden Mindestabstand zwischen Anfragen
+    jitter: 2
