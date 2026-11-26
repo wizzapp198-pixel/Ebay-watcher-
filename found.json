@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583344023",
+   "source": "kleinanzeigen",
+   "title": "ASUS TUF RTX 4080 SUPER 16GB GDDR6X OC Edition Gaming Grafikkarte",
+   "price": 630.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/asus-tuf-rtx-4080-super-16gb-gddr6x-oc-edition-gaming-grafikkarte/3583344023-225-132",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/0c/0c8d1f92-a486-4308-9966-4763260988e3?rule=$_59.AUTO",
+   "location": "18442 Wendorf",
+   "watch": "RTX 4080 / 4080 Super",
+   "score": 37,
+   "reasons": "KI ✓ Das Angebot ist eine passende RTX 4080 Super Grafikkarte.; Account jung (seit 04.10.2026); privat; Versand möglich; Preis 60% vom Ref.-Preis (auffällig); Hinweis: nur Vorkasse",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T20:01:47+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583309141",
    "source": "kleinanzeigen",
    "title": "ASUS TUF Gaming GeForce RTX 4070 Ti Super 16GB",
