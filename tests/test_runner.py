@@ -160,3 +160,16 @@ def test_accessory_skipped_unless_searched(settings, store):
     acc = Watch(name="Reifen", query="fahrrad reifen", sources=["kleinanzeigen"])
     from watcher.runner import accessory_mismatch
     assert accessory_mismatch(tyre, acc) is None
+
+
+def test_duplicate_variants_search_clean_query(settings, store, watch):
+    seen = []
+
+    class Rec(FakeSource):
+        def search(self, w):
+            seen.append(w.query)
+            return []
+
+    watch.query = "RX 9070 XT , rx 9070 xt"
+    make(settings, store, FakeNotifier(), Rec("ebay")).run([watch])
+    assert seen == ["rx 9070 xt"]

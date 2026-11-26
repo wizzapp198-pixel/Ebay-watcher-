@@ -144,7 +144,7 @@ class Runner:
         """Komma im Suchbegriff = mehrere Suchen (ODER), Ergebnisse ohne Doppelte."""
         queries = list(dict.fromkeys(q.strip().lower() for q in watch.query.split(",") if q.strip()))
         if len(queries) <= 1:
-            return src.search(watch)
+            return src.search(replace(watch, query=queries[0]) if queries else watch)
         merged: dict[str, Item] = {}
         for q in queries:
             for it in src.search(replace(watch, query=q)):
