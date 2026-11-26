@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583429235",
+   "source": "kleinanzeigen",
+   "title": "ASUS TUF Gaming RTX 5070 Ti Grafikkarte",
+   "price": 530.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/asus-tuf-gaming-rtx-5070-ti-grafikkarte/3583429235-225-1154",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/47/472cb0fa-83d8-4661-91b8-5f14658eea87?rule=$_59.AUTO",
+   "location": "50189 Elsdorf",
+   "watch": "RTX 5070 Ti",
+   "score": 35,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird direkt zum Kauf angeboten.; 🚩 PayPal Freunde; aktiv seit 02.05.2019; TOP Zufriedenheit, Freundlich, Zuverlässig; privat; 6 Anzeigen online; Versand möglich; ⚠ Preis nur 46% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T21:46:12+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583423417",
    "source": "kleinanzeigen",
    "title": "Gigabyte GeForce RTX 5070 Ti 16GB Windforce SSF Grafikkarte",
