@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583074767",
+   "source": "kleinanzeigen",
+   "title": "Sapphire Pulse Radeon RX 9070 XT 16GB – Sehr guter Zustand + Rech",
+   "price": 370.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/sapphire-pulse-radeon-rx-9070-xt-16gb-sehr-guter-zustand-rech/3583074767-225-131",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/db/db6f16de-2393-44a5-b6d6-7a83ad37b0ab?rule=$_59.AUTO",
+   "location": "18445 Prohn",
+   "watch": "RX 9070 XT",
+   "score": 35,
+   "reasons": "KI ✓ Es ist die gesuchte Grafikkarte und wird zum Kauf angeboten.; aktiv seit 14.05.2024; privat; 3 Anzeigen online; Versand möglich; ⚠ Preis nur 41% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T14:20:33+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583073713",
    "source": "kleinanzeigen",
    "title": "Damenfahrrad / Cityrad – fahrbereit 7gang.",
