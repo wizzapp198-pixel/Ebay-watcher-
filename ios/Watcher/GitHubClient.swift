@@ -76,6 +76,27 @@ struct GitHubClient: Sendable {
         }
     }
 
+    /// Liefert Entscheidungen + SHA (nil, wenn die Datei noch nicht existiert).
+    func decisions() async throws -> (Decisions, String?) {
+        do {
+            let data = try await request("/contents/decisions.json?ref=watcher-data")
+            let file = try Self.decoder.decode(ContentFile.self, from: data)
+            let raw = Data(base64Encoded: file.content.replacingOccurrences(of: "\n", with: "")) ?? Data()
+            return ((try? JSONDecoder().decode(Decisions.self, from: raw)) ?? Decisions(), file.sha)
+        } catch let e as APIError where e.message.hasPrefix("Nicht gefunden") {
+            return (Decisions(), nil)
+        }
+    }
+
+    func saveDecisions(_ d: Decisions, sha: String?) async throws -> String {
+        let json = try JSONEncoder().encode(d)
+        var body: [String: Any] = ["message": "App: Funde sortiert", "branch": "watcher-data",
+                                   "content": json.base64EncodedString()]
+        if let sha { body["sha"] = sha }
+        let data = try await request("/contents/decisions.json", method: "PUT", body: body)
+        return try Self.decoder.decode(ContentPutResponse.self, from: data).content.sha
+    }
+
     func runs() async throws -> [WorkflowRun] {
         let data = try await request("/actions/workflows/watch.yml/runs?per_page=15")
         return try Self.decoder.decode(RunsResponse.self, from: data).workflowRuns

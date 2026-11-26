@@ -4,7 +4,7 @@ on:
   schedule:
     # Privates Repo: alle 30 Min. (Gratis-Kontingent 2000 Min./Monat).
     # Hinweis: GitHub startet Cron-Jobs oft einige Minuten verspätet.
-    - cron: "*/30 * * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
     inputs:
       test_push:
@@ -76,7 +76,10 @@ jobs:
           cd data
           git add found.json
           git commit -qm "Neue Funde" || exit 0
-          for i in 1 2 3; do git push -q origin HEAD:refs/heads/watcher-data && break; sleep 3; done
+          for i in 1 2 3; do
+            git push -q origin HEAD:refs/heads/watcher-data && break
+            sleep 3; git pull -q --rebase origin watcher-data || true   # App hat inzwischen decisions.json geändert
+          done
 
       - name: Zustand speichern
         if: always()

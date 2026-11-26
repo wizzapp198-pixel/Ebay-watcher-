@@ -27,7 +27,7 @@ struct SetupView: View {
                     Step(n: 1, text: "Unten auf „Token erstellen“ tippen und bei GitHub anmelden.")
                     Step(n: 2, text: "Name z. B. „Watcher App“, Ablauf: 1 Jahr.")
                     Step(n: 3, text: "Repository access → Only select repositories → \(repo.isEmpty ? "dein Watcher-Repo" : repo).")
-                    Step(n: 4, text: "Permissions → Repository: Actions „Read and write“, Contents „Read-only“, Issues „Read and write“.")
+                    Step(n: 4, text: "Permissions → Repository: Actions „Read and write“, Contents „Read and write“, Issues „Read and write“.")
                     Step(n: 5, text: "Generate token → kopieren → hier einfügen.")
                     Link(destination: tokenURL) {
                         Label("Token erstellen", systemImage: "arrow.up.right.square")

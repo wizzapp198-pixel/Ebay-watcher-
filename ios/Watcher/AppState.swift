@@ -11,6 +11,12 @@ final class AppState: ObservableObject {
     @Published var runs: [WorkflowRun] = []
     @Published var found: [FoundItem] = []
     @AppStorage("foundSeen") var foundSeen = ""
+    @AppStorage("decisions") private var decisionsJSON = ""
+    @Published var decisions = Decisions()
+    @Published var syncOff = false
+    @Published var undoStack: [String] = []
+    private var decSha: String?
+    private var syncTask: Task<Void, Never>?
     @Published var branch = ""
     @Published var repoURL = ""
     @Published var isPrivate = false
@@ -79,6 +85,71 @@ final class AppState: ObservableObject {
     func refreshFound() async {
         guard isConfigured else { return }
         do { found = try await client.found() } catch { show("Funde laden fehlgeschlagen", error) }
+        await pullDecisions()
+    }
+
+    // MARK: Sortieren (links = behalten, rechts = löschen)
+    var freshFound: [FoundItem] { found.filter { decisions.deleted[$0.key] == nil && decisions.kept[$0.key] == nil } }
+    var keptFound: [FoundItem] { found.filter { decisions.kept[$0.key] != nil && decisions.deleted[$0.key] == nil } }
+
+    func loadLocalDecisions() {
+        if let d = try? JSONDecoder().decode(Decisions.self, from: Data(decisionsJSON.utf8)) { decisions = d }
+    }
+
+    private func storeLocal() {
+        if let data = try? JSONEncoder().encode(decisions) { decisionsJSON = String(decoding: data, as: UTF8.self) }
+    }
+
+    func pullDecisions() async {
+        do {
+            let (remote, sha) = try await client.decisions()
+            decSha = sha
+            decisions = decisions.merged(with: remote)
+            storeLocal()
+        } catch let e as APIError where e.message.hasPrefix("Keine Berechtigung") {
+            syncOff = true
+        } catch {}
+    }
+
+    func decide(_ item: FoundItem, keep: Bool) {
+        let now = Date().timeIntervalSince1970 * 1000
+        if keep { decisions.kept[item.key] = now; decisions.deleted[item.key] = nil }
+        else { decisions.deleted[item.key] = now; decisions.kept[item.key] = nil }
+        undoStack.append(item.key)
+        storeLocal()
+        scheduleSync()
+    }
+
+    func undo() {
+        guard let key = undoStack.popLast() else { return }
+        decisions.kept[key] = nil
+        decisions.deleted[key] = nil
+        storeLocal()
+        scheduleSync()
+    }
+
+    private func scheduleSync() {
+        syncTask?.cancel()
+        syncTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
+            guard !Task.isCancelled else { return }
+            await self?.pushDecisions()
+        }
+    }
+
+    private func pushDecisions() async {
+        guard !syncOff, !found.isEmpty else { return }
+        for _ in 0..<2 {
+            do {
+                decSha = try await client.saveDecisions(decisions, sha: decSha)
+                return
+            } catch let e as APIError where e.message.hasPrefix("Keine Berechtigung") {
+                syncOff = true
+                return
+            } catch {
+                await pullDecisions()   // SHA veraltet -> neu laden, zusammenführen, erneut
+            }
+        }
     }
 
     func markFoundSeen() {

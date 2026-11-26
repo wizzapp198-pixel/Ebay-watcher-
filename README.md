@@ -164,6 +164,12 @@ Beide Apps zeigen im Tab **Funde** alle gemeldeten Angebote (letzte 300, mit Bil
 Begründung; antippen öffnet das Angebot) – auch wenn eine Push-Nachricht nicht ankommt. Gespeichert werden sie
 im Repo auf dem Branch `watcher-data` (Datei `found.json`).
 
+**Sortieren wie bei Tinder:** Unter „Funde → Neu“ liegt jedes Angebot als Karte.
+**Nach links wischen = behalten** (landet unter „Behalten“), **nach rechts wischen = löschen** (verschwindet).
+Antippen öffnet das Angebot, ↶ macht den letzten Schritt rückgängig. Die Sortierung wird zwischen iPhone-App und
+Web-App abgeglichen (Datei `decisions.json` auf `watcher-data`), dafür braucht der Token das Recht
+**Contents: Read and write**. Ohne dieses Recht wird nur auf dem jeweiligen Gerät gespeichert.
+
 Außerdem können beide: Suchaufträge ansehen, anlegen, ändern, pausieren und löschen, **Jetzt suchen**,
 **Test-Push** und die letzten Läufe anzeigen. Änderungen laufen intern über dasselbe Issue-Formular
 (gleiche Prüfung, gleicher Bot), die App zeigt dir die Antwort des Bots direkt an.
@@ -173,7 +179,7 @@ Außerdem können beide: Suchaufträge ansehen, anlegen, ändern, pausieren und 
 2. Name: `Watcher App`, Expiration: 1 Jahr (oder „No expiration“).
 3. **Repository access → Only select repositories →** `Ebay-watcher-`
 4. **Permissions → Repository permissions:**
-   **Actions:** Read and write · **Contents:** Read-only · **Issues:** Read and write (Metadata stellt GitHub automatisch ein).
+   **Actions:** Read and write · **Contents:** Read and write · **Issues:** Read and write (Metadata stellt GitHub automatisch ein).
 5. **Generate token**, kopieren und in der App einfügen. Nicht im Chat oder irgendwo anders speichern.
 
 Der Token wird in der iOS-App im Schlüsselbund gespeichert, in der Web-App nur im Browser dieses Geräts,

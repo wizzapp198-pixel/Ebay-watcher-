@@ -154,6 +154,33 @@ struct FoundList: Decodable {
     let found: [FoundItem]
 }
 
+/// Sortier-Entscheidungen (decisions.json auf Branch watcher-data), Wert = Zeitpunkt in ms.
+struct Decisions: Codable, Equatable {
+    var kept: [String: Double] = [:]
+    var deleted: [String: Double] = [:]
+
+    func merged(with other: Decisions) -> Decisions {
+        var out = Decisions(kept: kept.merging(other.kept) { max($0, $1) },
+                            deleted: deleted.merging(other.deleted) { max($0, $1) })
+        for (k, t) in out.kept {
+            if let d = out.deleted[k] {
+                if d > t { out.kept[k] = nil } else { out.deleted[k] = nil }
+            }
+        }
+        return out
+    }
+}
+
+struct ContentFile: Decodable {
+    let sha: String
+    let content: String
+}
+
+struct ContentPutResponse: Decodable {
+    struct C: Decodable { let sha: String }
+    let content: C
+}
+
 struct RepoInfo: Decodable {
     let defaultBranch: String
     let isPrivate: Bool
