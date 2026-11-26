@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  models: read
 
 jobs:
   pytest:
@@ -26,3 +27,8 @@ jobs:
           python -m watcher --probe
           sleep 5
           PROBE_QUERY="rx 9070 xt" PROBE_MAX=800 python -m watcher --probe
+      - name: KI-Diagnose (GitHub Models)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python -m watcher.ai_probe

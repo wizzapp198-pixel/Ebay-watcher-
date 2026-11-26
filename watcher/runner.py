@@ -167,6 +167,8 @@ class Runner:
         min_trust = watch.min_trust if watch.min_trust is not None else self.settings.min_trust
         send_susp = watch.send_suspicious if watch.send_suspicious is not None else self.settings.send_suspicious
 
+        # Phase 1: Regeln anwenden, Kandidaten sammeln (Details nur für Kandidaten laden)
+        cands: list[Item] = []
         for it in items:
             if self.store.is_seen(it.key):
                 continue
@@ -176,9 +178,9 @@ class Runner:
                 self.store.mark_seen(it.key, it.title)
                 st.skipped += 1
                 continue
-            if budget <= 0:
-                log.info("Push-Limit pro Lauf erreicht, Rest folgt im nächsten Lauf")
-                return budget
+            if len(cands) >= budget + 8:
+                log.info("Genug Kandidaten für diesen Lauf, Rest folgt im nächsten Lauf")
+                break
             if not it.details_loaded:
                 try:
                     it = src.details(it)
@@ -201,13 +203,23 @@ class Runner:
                 self.store.mark_seen(it.key, it.title)
                 st.skipped += 1
                 continue
-            verdict = self.ai.check(it, watch)
+            cands.append(it)
+
+        # Phase 2: KI-Prüfung gebündelt
+        verdicts = self.ai.check_many(cands, watch) if cands else {}
+
+        # Phase 3: bewerten und pushen
+        for it in cands:
+            verdict = verdicts.get(it.key)
             if verdict is not None and not verdict.ok:
                 log.info("  - %s: KI aussortiert – %s", it.title[:60], verdict.reason)
                 self.store.mark_seen(it.key, it.title)
                 st.skipped += 1
                 st.ai_rejected += 1
                 continue
+            if budget <= 0:
+                log.info("Push-Limit pro Lauf erreicht, Rest folgt im nächsten Lauf")
+                return budget
             sc = score_item(it, watch, min_trust)
             if verdict is not None:
                 sc.reasons.insert(0, f"KI ✓ {verdict.reason}")

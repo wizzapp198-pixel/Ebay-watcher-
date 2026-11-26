@@ -22,6 +22,7 @@ concurrency:
 
 permissions:
   contents: write   # nur für den Daten-Branch "watcher-data" (gefundene Angebote für die Apps)
+  models: read      # kostenlose KI-Prüfung über GitHub Models
 
 jobs:
   run:
@@ -51,6 +52,7 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
           DISABLED_SOURCES: ${{ vars.DISABLED_SOURCES }}
           TEST_PUSH: ${{ inputs.test_push }}
           PROBE: ${{ inputs.probe }}

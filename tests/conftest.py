@@ -75,3 +75,10 @@ def store(tmp_path):
 def watch():
     return Watch(name="iPhone", query="iphone 13", sources=["ebay", "kleinanzeigen"],
                  min_price=50, max_price=400, ref_price=300)
+
+
+@pytest.fixture(autouse=True)
+def _no_network_ai(monkeypatch):
+    """Tests laufen ohne Netzwerk: keine echten KI-Zugänge aus der Umgebung verwenden."""
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)

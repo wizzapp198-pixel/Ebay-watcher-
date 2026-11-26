@@ -22,14 +22,14 @@ exclude:
   - ankauf
   - gesuch
 
-# KI-Prüfung mit Claude (nur aktiv, wenn das Secret ANTHROPIC_API_KEY gesetzt ist).
-# Prüft nur Angebote, die alle anderen Filter bestanden haben: Passt es genau zum Auftrag?
-# Ist es ein Verkauf (kein Gesuch/Ankauf/Zubehör/Spielzeug)?
+# KI-Prüfung: Passt das Angebot genau? Ist es ein Verkauf (kein Gesuch/Ankauf/Zubehör/Spielzeug)?
+# provider: auto = Claude-API falls ANTHROPIC_API_KEY gesetzt, sonst GitHub Models (kostenlos,
+#           mit Tageslimit, braucht keinen Key), sonst aus. Weitere Werte: github, anthropic, off
 ai:
   enabled: true
-  model: claude-opus-5-5      # günstiger: claude-haiku-5-5 (ca. 40x billiger, etwas ungenauer)
-  effort: low
-  max_checks_per_run: 25      # Kostenbremse pro Lauf
+  provider: auto
+  # model: openai/gpt-4.1-mini    # Standard bei GitHub Models; bei Claude: claude-opus-5-5
+  max_requests_per_run: 10        # je Anfrage bis zu 10 Angebote
 
 sources:
   ebay:
