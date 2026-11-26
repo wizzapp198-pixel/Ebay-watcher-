@@ -101,9 +101,10 @@ Unter Mindest-Vertrauen (Standard 60) wird nicht gepusht – außer „Verdächt
 Kleinanzeigen hat **keine offizielle API**; der Watcher liest die öffentlichen Suchseiten (neueste zuerst) mit
 mind. 4–6 s Abstand pro Anfrage, Retry mit Backoff, ohne Login. **Sperren oder Captchas werden nicht umgangen.**
 
-Bei der Entwicklung (Cloud-Server) kam nach wenigen Anfragen die Seite **„IP-Bereich vorübergehend gesperrt“** (HTTP 403).
-GitHub-Actions-Server sind ebenfalls Cloud-IPs, dort ist das gleiche Verhalten wahrscheinlich.
-Der Watcher erkennt das, schickt höchstens 1× pro Stunde eine Warnung, und **eBay läuft normal weiter**.
+**Getestet am 26.11.2026:** Von **GitHub Actions aus funktioniert Kleinanzeigen** (Testsuche: 27 Treffer korrekt gelesen).
+Von einem anderen Cloud-Server kam dagegen „IP-Bereich vorübergehend gesperrt“ (HTTP 403) – Kleinanzeigen sperrt
+also manche Cloud-IP-Bereiche, und das kann sich jederzeit auch für GitHub ändern.
+Der Watcher erkennt eine Sperre, schickt höchstens 1× pro Stunde eine Warnung, und **eBay läuft normal weiter**.
 
 **Wenn die Warnung regelmäßig kommt:** Kleinanzeigen in GitHub abschalten und zu Hause laufen lassen.
 
