@@ -42,7 +42,8 @@ def export_found(found: list, path: str) -> None:
 def probe(settings) -> int:
     from .models import Watch
     from .sources import REGISTRY
-    w = Watch(name="Probe", query="fahrrad", plz="06773", radius=50)
+    w = Watch(name="Probe", query=os.environ.get("PROBE_QUERY", "fahrrad"),
+              max_price=float(os.environ["PROBE_MAX"]) if os.environ.get("PROBE_MAX") else None)
     for name, cls in REGISTRY.items():
         if not settings.source_enabled(name):
             logging.info("PROBE %s: abgeschaltet", name)

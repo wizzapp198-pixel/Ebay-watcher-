@@ -145,3 +145,18 @@ def test_failed_push_not_in_found(settings, store, watch):
     make(settings, store, FakeNotifier(), src).run([watch])
     st = make(settings, store, FakeNotifier(fail=True), src).run([watch])
     assert st.found == []
+
+
+def test_accessory_skipped_unless_searched(settings, store):
+    from watcher.models import Watch
+    bike = Watch(name="Fahrrad", query="fahrrad", sources=["kleinanzeigen"])
+    tyre = good_ka(1, title="Schwalbe Marathon Fahrrad Reifen"); tyre.attributes = {"Art": "Zubehör", "Typ": "Andere Fahrräder"}
+    bag = good_ka(2, title="Bikepacking-Set Topeak"); bag.attributes = {"Art": "Zubehör"}
+    real = good_ka(3, title="Damenrad 28 Zoll"); real.attributes = {"Art": "Damen", "Typ": "Citybike"}
+    n = FakeNotifier()
+    src = FakeSource("kleinanzeigen", [[], [tyre, bag, real]])
+    make(settings, store, n, src).run([bike]); make(settings, store, n, src).run([bike])
+    assert len(n.sent) == 1 and "Damenrad" in n.sent[0]["title"]
+    acc = Watch(name="Reifen", query="fahrrad reifen", sources=["kleinanzeigen"])
+    from watcher.runner import accessory_mismatch
+    assert accessory_mismatch(tyre, acc) is None

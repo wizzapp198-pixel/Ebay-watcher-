@@ -57,6 +57,21 @@ def prefilter(item: Item, watch: Watch, settings: Settings) -> str | None:
     return None
 
 
+ACCESSORY_TYPES = ("zubehör", "ersatzteil", "ersatzteile", "teile", "zubehör & ersatzteile")
+
+
+def accessory_mismatch(item: Item, watch: Watch) -> str | None:
+    """Kleinanzeigen-Angabe "Art: Zubehör/Ersatzteile", obwohl nicht nach Zubehör gesucht wird."""
+    q = watch.query.lower() + " " + (watch.ai_hint or "").lower()
+    if any(w in q for w in ("zubehör", "ersatzteil", "teile", "reifen", "tasche")):
+        return None
+    for key in ("Art", "Typ"):
+        v = (item.attributes.get(key) or "").strip().lower()
+        if v in ACCESSORY_TYPES:
+            return f"{key}: {item.attributes[key]}"
+    return None
+
+
 def condition_ok(item: Item, watch: Watch) -> bool:
     if watch.condition == "egal" or not item.condition:
         return True
@@ -172,6 +187,12 @@ class Runner:
                 except SourceError as e:
                     log.warning("Details nicht ladbar (%s): %s", it.url, e)
             if not condition_ok(it, watch):
+                self.store.mark_seen(it.key, it.title)
+                st.skipped += 1
+                continue
+            acc = accessory_mismatch(it, watch)
+            if acc:
+                log.info("  - %s: Zubehör/Ersatzteil (%s)", it.title[:60], acc)
                 self.store.mark_seen(it.key, it.title)
                 st.skipped += 1
                 continue

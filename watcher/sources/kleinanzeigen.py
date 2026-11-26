@@ -125,6 +125,8 @@ def parse_details(html: str, item: Item) -> Item:
     for li in soup.select("#viewad-details li"):
         val = li.find("span")
         label = li.get_text(" ", strip=True).replace(val.get_text(" ", strip=True), "").strip() if val else ""
+        if val and label:
+            item.attributes[label] = val.get_text(" ", strip=True)
         if label.lower().startswith("zustand") and val:
             item.condition = val.get_text(" ", strip=True)
     m = re.search(r'"Angebotstyp"\s*:\s*"([^"]+)"', html)
@@ -183,6 +185,7 @@ class KleinanzeigenSource(Source):
         r = self.http.get(build_search_url(watch))
         _check_block(r.text, r.status_code)
         items = parse_search(r.text)
+        log.info("Kleinanzeigen-Suche %s -> %d Anzeigen", r.url.split("?")[0], len(items))
         if watch.shipping_only:
             items = [i for i in items if i.shipping]
         return items

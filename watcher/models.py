@@ -41,6 +41,7 @@ class Item:
     secure_payment: Optional[bool] = None  # Kleinanzeigen "Direkt kaufen"/Sicher bezahlen
     price_negotiable: bool = False
     offer_type: Optional[str] = None       # Kleinanzeigen: "Angebot" / "Gesuch"
+    attributes: dict = field(default_factory=dict)  # Kleinanzeigen-Details, z. B. {"Art": "Zubehör"}
     seller: Seller = field(default_factory=Seller)
     details_loaded: bool = False
 
