@@ -10,6 +10,9 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 settings = load_settings(Path(ROOT / "config.yaml"))
 ai = AIChecker(settings)
 print("KI-Anbieter:", ai.provider, "Modell:", ai.model)
+if not ai.enabled:
+    print("Kein KI-Key gesetzt – nichts zu testen.")
+    raise SystemExit(0)
 w = Watch(name="Fahrrad", query="fahrrad", max_price=1200)
 items = [
     Item(id="1", source="kleinanzeigen", title="Schwalbe Marathon Plus Fahrrad Trekking 37-622", url="u", price=29,
