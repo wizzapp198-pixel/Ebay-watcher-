@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3576612715",
+   "source": "kleinanzeigen",
+   "title": "[NEU] AORUS GeForce RTX 5070 Ti MASTER 16GB OC",
+   "price": 800.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/-neu-aorus-geforce-rtx-5070-ti-master-16gb-oc/3576612715-225-5542",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/45/456674a7-115e-4fec-ae8d-3b7445758bf2?rule=$_59.AUTO",
+   "location": "82541 Münsing",
+   "watch": "RTX 5070 Ti",
+   "score": 55,
+   "reasons": "KI ✓ Das Angebot zeigt die gesuchte Grafikkarte als Verkaufsartikel.; 🚩 PayPal Freunde; aktiv seit 08.10.2011; TOP Zufriedenheit, Sehr freundlich, Sehr zuverlässig; privat; Preis 70% vom Ref.-Preis (auffällig)",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T16:46:32+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583102814",
    "source": "kleinanzeigen",
    "title": "PowerColor Hellhound AMD Radeon RX 9070 XT, 16GB, Garantie, OVP",
