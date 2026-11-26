@@ -11,8 +11,8 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 
 ## RX 9070 OC (▶️ aktiv)
 - Suche: `RX 9070 OC` · Quellen: eBay + Kleinanzeigen
-- Preis: – bis 550 € · Ref.: 700 €
-- Zustand egal · eBay-Kaufart egal · KA: deutschlandweit · ⚠️ verdächtige senden
+- Preis: – bis 630 € · Ref.: 700 €
+- Zustand egal · eBay-Kaufart egal · KA: deutschlandweit
 - Ausschluss: kein käuferschutz, nur freunde und familie
 - KI-Wunsch: Nur die Grafikarte
 

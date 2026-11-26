@@ -26,7 +26,7 @@
         "ebay",
         "kleinanzeigen"
       ],
-      "max_price": 550.0,
+      "max_price": 630.0,
       "ref_price": 700.0,
       "condition": "egal",
       "buying": "egal",
@@ -35,7 +35,6 @@
         "nur freunde und familie"
       ],
       "ai_hint": "Nur die Grafikarte",
-      "send_suspicious": true,
       "active": true
     },
     {

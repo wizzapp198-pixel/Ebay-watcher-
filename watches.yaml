@@ -21,7 +21,7 @@ watches:
   sources:
   - ebay
   - kleinanzeigen
-  max_price: 550.0
+  max_price: 630.0
   ref_price: 700.0
   condition: egal
   buying: egal
@@ -29,7 +29,6 @@ watches:
   - kein käuferschutz
   - nur freunde und familie
   ai_hint: Nur die Grafikarte
-  send_suspicious: true
   active: true
 - name: RX 7900 XTX
   query: 7900 XTX, Radeon 7900 XTX, RX 7900 XTX
