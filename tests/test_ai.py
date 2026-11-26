@@ -53,7 +53,8 @@ def test_github_models_batch(settings, store, watch, monkeypatch):
     monkeypatch.setenv("GITHUB_TOKEN", "t")
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     http = FakeHttp([RESULTS])
-    ai = AIChecker(Settings(), http=http)
+    st_ = Settings(); st_.ai = {"provider": "github"}
+    ai = AIChecker(st_, http=http)
     assert ai.provider == "github" and ai.model == "openai/gpt-4.1-mini"
     n, st = run_twice(settings, store, watch, [good_ka(1), good_ka(2), good_ka(3)], ai)
     assert len(http.calls) == 1                       # alle drei in EINER Anfrage
@@ -67,7 +68,8 @@ def test_github_models_batch(settings, store, watch, monkeypatch):
 def test_github_limit_lets_items_through(settings, store, watch, monkeypatch):
     monkeypatch.setenv("GITHUB_TOKEN", "t")
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
-    ai = AIChecker(Settings(), http=FakeHttp([], status=429))
+    st_ = Settings(); st_.ai = {"provider": "github"}
+    ai = AIChecker(st_, http=FakeHttp([], status=429))
     n, st = run_twice(settings, store, watch, [good_ka(1), good_ka(2)], ai)
     assert len(n.sent) == 2 and not ai.enabled       # ungeprüft durchgelassen
 

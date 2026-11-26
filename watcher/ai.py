@@ -139,9 +139,9 @@ class AIChecker:
         elif provider == "auto":
             if client is not None or os.environ.get("ANTHROPIC_API_KEY"):
                 provider = "anthropic"
-            elif os.environ.get("GITHUB_TOKEN"):
-                provider = "github"
-            else:
+            else:   # GitHub Models wurde am 30.07.2026 eingestellt -> nicht mehr automatisch
+                provider = "off"
+            if False:
                 provider = "off"
         self.provider = provider
         self.enabled = provider != "off"

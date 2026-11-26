@@ -23,8 +23,8 @@ exclude:
   - gesuch
 
 # KI-Prüfung: Passt das Angebot genau? Ist es ein Verkauf (kein Gesuch/Ankauf/Zubehör/Spielzeug)?
-# provider: auto = Claude-API falls ANTHROPIC_API_KEY gesetzt, sonst GitHub Models (kostenlos,
-#           mit Tageslimit, braucht keinen Key), sonst aus. Weitere Werte: github, anthropic, off
+# provider: auto = Claude-API falls ANTHROPIC_API_KEY gesetzt, sonst aus.
+#           (GitHub Models wurde am 30.07.2026 eingestellt.) Werte: auto, anthropic, off
 ai:
   enabled: true
   provider: auto
