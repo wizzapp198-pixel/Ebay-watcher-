@@ -83,6 +83,7 @@ class Watch:
             "q": ",".join(sorted({q.strip().lower() for q in self.query.split(",") if q.strip()})),
             "min": self.min_price, "max": self.max_price,
             "cond": self.condition,
+            "v": 2,  # Version erhöhen = alle Aufträge einmal still neu einlesen (kein Push-Spam)
         }
         if source == "ebay":
             relevant["buy"] = self.buying
