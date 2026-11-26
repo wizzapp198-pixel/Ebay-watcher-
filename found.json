@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583453635",
+   "source": "kleinanzeigen",
+   "title": "Asus AMD Radeon RX 9070 XT",
+   "price": 430.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/asus-amd-radeon-rx-9070-xt/3583453635-225-3176",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/c2/c2afd928-1e77-4781-892a-8e7f7efba60b?rule=$_59.AUTO",
+   "location": "30449 Linden-Limmer",
+   "watch": "RX 9070 XT",
+   "score": 37,
+   "reasons": "KI ✓ Es ist die gesuchte Grafikkarte als Verkaufsangebot.; Account jung (seit 09.09.2026); TOP Zufriedenheit, Zuverlässig; privat; 2 Anzeigen online; Versand möglich; ⚠ Preis nur 48% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-26T23:15:53+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583439570",
    "source": "kleinanzeigen",
    "title": "Gigabyte GeForce RTX 5070 Ti 16GB Windforce SSF Grafikkarte",
