@@ -7,6 +7,7 @@ import time
 from dataclasses import dataclass, field, replace
 
 from .ai import AIChecker
+from .found import entry as found_entry
 from .config import Settings
 from .http import SourceBlocked, SourceError
 from .models import SOURCE_LABELS, Item, Watch
@@ -28,6 +29,7 @@ class RunStats:
     ebay_calls: int = 0
     ai_checks: int = 0
     ai_rejected: int = 0
+    found: list = field(default_factory=list)
 
 
 def _has_word(text: str, words: list[str]) -> str | None:
@@ -206,6 +208,7 @@ class Runner:
                 st.failed_push += 1
                 continue
             self.store.mark_seen(it.key, it.title)
+            st.found.append(found_entry(it, watch.name, sc, kind))
             st.pushed += 1
             budget -= 1
         return budget

@@ -117,6 +117,43 @@ struct WatchDraft: Equatable {
     }
 }
 
+/// Ein gemeldetes Angebot (found.json auf Branch watcher-data).
+struct FoundItem: Decodable, Identifiable {
+    var id: String { key }
+    let key: String
+    let source: String
+    let title: String
+    let price: Double?
+    let priceNegotiable: Bool?
+    let url: String
+    let image: String?
+    let location: String?
+    let watch: String
+    let score: Int?
+    let reasons: String?
+    let kind: String?
+    let foundAt: String
+
+    var date: Date? { ISO8601DateFormatter().date(from: foundAt) }
+
+    var priceLabel: String {
+        guard let price else { return "Preis k. A." }
+        return Fmt.euro(price) + ((priceNegotiable ?? false) ? " VB" : "")
+    }
+
+    var badge: String {
+        switch kind {
+        case "bargain": return "🔥 "
+        case "suspicious": return "⚠️ "
+        default: return ""
+        }
+    }
+}
+
+struct FoundList: Decodable {
+    let found: [FoundItem]
+}
+
 struct RepoInfo: Decodable {
     let defaultBranch: String
     let isPrivate: Bool

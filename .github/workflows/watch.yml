@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write   # nur für den Daten-Branch "watcher-data" (gefundene Angebote für die Apps)
 
 jobs:
   run:
@@ -54,11 +54,29 @@ jobs:
           DISABLED_SOURCES: ${{ vars.DISABLED_SOURCES }}
           TEST_PUSH: ${{ inputs.test_push }}
           PROBE: ${{ inputs.probe }}
+          FOUND_OUT: new_found.json
         run: |
           ARGS="--once --schedule-interval 1800"
           if [ "$TEST_PUSH" = "true" ]; then ARGS="$ARGS --test-push"; fi
           if [ "$PROBE" = "true" ]; then ARGS="$ARGS --probe"; fi
           python -m watcher $ARGS
+
+      - name: Funde für die Apps veröffentlichen (Branch watcher-data)
+        if: always()
+        run: |
+          [ -s new_found.json ] || { echo "keine neuen Funde"; exit 0; }
+          git config --global user.name "watcher-bot"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q --depth 1 origin watcher-data; then
+            git worktree add -q data FETCH_HEAD
+          else
+            git worktree add -q --orphan -b watcher-data data
+          fi
+          python -m watcher.found new_found.json data/found.json
+          cd data
+          git add found.json
+          git commit -qm "Neue Funde" || exit 0
+          for i in 1 2 3; do git push -q origin HEAD:refs/heads/watcher-data && break; sleep 3; done
 
       - name: Zustand speichern
         if: always()

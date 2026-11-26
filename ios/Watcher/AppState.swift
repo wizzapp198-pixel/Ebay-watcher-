@@ -9,6 +9,8 @@ final class AppState: ObservableObject {
 
     @Published var watches: [Watch] = []
     @Published var runs: [WorkflowRun] = []
+    @Published var found: [FoundItem] = []
+    @AppStorage("foundSeen") var foundSeen = ""
     @Published var branch = ""
     @Published var repoURL = ""
     @Published var isPrivate = false
@@ -65,11 +67,22 @@ final class AppState: ObservableObject {
             let b = branch
             async let w = c.watches(branch: b)
             async let r = c.runs()
+            async let f = c.found()
             watches = try await w
             runs = (try? await r) ?? []
+            found = (try? await f) ?? found
         } catch {
             show("Laden fehlgeschlagen", error)
         }
+    }
+
+    func refreshFound() async {
+        guard isConfigured else { return }
+        do { found = try await client.found() } catch { show("Funde laden fehlgeschlagen", error) }
+    }
+
+    func markFoundSeen() {
+        if let newest = found.first?.foundAt { foundSeen = newest }
     }
 
     func refreshRuns() async {

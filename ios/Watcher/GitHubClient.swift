@@ -66,6 +66,16 @@ struct GitHubClient: Sendable {
         }
     }
 
+    func found() async throws -> [FoundItem] {
+        do {
+            let data = try await request("/contents/found.json?ref=watcher-data",
+                                         accept: "application/vnd.github.raw+json")
+            return try Self.decoder.decode(FoundList.self, from: data).found
+        } catch let e as APIError where e.message.hasPrefix("Nicht gefunden") {
+            return []
+        }
+    }
+
     func runs() async throws -> [WorkflowRun] {
         let data = try await request("/actions/workflows/watch.yml/runs?per_page=15")
         return try Self.decoder.decode(RunsResponse.self, from: data).workflowRuns

@@ -121,3 +121,27 @@ def test_comma_means_or_and_dedup(settings, store, watch):
     st = make(settings, store, n, Multi("ebay")).run([watch])
     assert seen_queries == ["rx 9070 xt", "radeon 9070"]
     assert st.baseline == 3
+
+
+def test_found_list_recorded_and_merged(settings, store, watch, tmp_path):
+    import json
+    from watcher.found import merge, merge_files
+    n = FakeNotifier()
+    src = FakeSource("ebay", [[], [good_ebay(1), good_ebay(2)]])
+    make(settings, store, n, src).run([watch])
+    st = make(settings, store, n, src).run([watch])
+    assert [f["key"] for f in st.found] == ["ebay:1", "ebay:2"]
+    assert st.found[0]["watch"] == "iPhone" and st.found[0]["url"].endswith("/1")
+    new = tmp_path / "new.json"; target = tmp_path / "found.json"
+    new.write_text(json.dumps(st.found))
+    merge_files(new, target); merge_files(new, target)
+    data = json.loads(target.read_text())["found"]
+    assert [f["key"] for f in data] == ["ebay:2", "ebay:1"]  # neueste zuerst, keine Doppelten
+    assert len(merge([{"key": str(i)} for i in range(400)], [], limit=300)) == 300
+
+
+def test_failed_push_not_in_found(settings, store, watch):
+    src = FakeSource("ebay", [[], [good_ebay(1)]])
+    make(settings, store, FakeNotifier(), src).run([watch])
+    st = make(settings, store, FakeNotifier(fail=True), src).run([watch])
+    assert st.found == []

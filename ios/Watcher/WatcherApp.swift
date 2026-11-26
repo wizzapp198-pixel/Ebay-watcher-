@@ -19,6 +19,8 @@ struct RootView: View {
         Group {
             if state.isConfigured {
                 TabView {
+                    FoundView()
+                        .tabItem { Label("Funde", systemImage: "bag") }
                     WatchListView()
                         .tabItem { Label("Aufträge", systemImage: "magnifyingglass") }
                     StatusView()

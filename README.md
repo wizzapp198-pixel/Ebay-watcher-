@@ -160,7 +160,11 @@ deaktivieren (Actions → Watcher → ⋯ → Disable workflow), sonst kommen Pu
 
 ## Steuerung per App (iPhone) und Web-App
 
-Beide Apps können: Suchaufträge ansehen, anlegen, ändern, pausieren und löschen, **Jetzt suchen**,
+Beide Apps zeigen im Tab **Funde** alle gemeldeten Angebote (letzte 300, mit Bild, Preis, Vertrauen und
+Begründung; antippen öffnet das Angebot) – auch wenn eine Push-Nachricht nicht ankommt. Gespeichert werden sie
+im Repo auf dem Branch `watcher-data` (Datei `found.json`).
+
+Außerdem können beide: Suchaufträge ansehen, anlegen, ändern, pausieren und löschen, **Jetzt suchen**,
 **Test-Push** und die letzten Läufe anzeigen. Änderungen laufen intern über dasselbe Issue-Formular
 (gleiche Prüfung, gleicher Bot), die App zeigt dir die Antwort des Bots direkt an.
 
