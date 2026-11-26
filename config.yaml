@@ -23,12 +23,13 @@ exclude:
   - gesuch
 
 # KI-Prüfung: Passt das Angebot genau? Ist es ein Verkauf (kein Gesuch/Ankauf/Zubehör/Spielzeug)?
-# provider: auto = Claude-API falls ANTHROPIC_API_KEY gesetzt, sonst aus.
-#           (GitHub Models wurde am 30.07.2026 eingestellt.) Werte: auto, anthropic, off
+# provider: auto = Claude-API falls ANTHROPIC_API_KEY gesetzt, sonst Google Gemini falls
+#           GEMINI_API_KEY gesetzt (kostenlos mit Tageslimit), sonst aus.
+#           Werte: auto, gemini, anthropic, off   (GitHub Models wurde am 30.07.2026 eingestellt)
 ai:
   enabled: true
   provider: auto
-  # model: openai/gpt-4.1-mini    # Standard bei GitHub Models; bei Claude: claude-opus-5-5
+  # model: gemini-3.5-flash-lite  # Standard bei Gemini; bei Claude: claude-opus-5-5
   max_requests_per_run: 10        # je Anfrage bis zu 10 Angebote
 
 sources:

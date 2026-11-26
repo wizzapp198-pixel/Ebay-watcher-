@@ -24,6 +24,8 @@ from .models import Item, Watch
 log = logging.getLogger(__name__)
 
 GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions"
+GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
+GEMINI_API_REVISION = "2026-05-20"
 BATCH = 10
 
 SYSTEM = """Du prüfst Kleinanzeigen- und eBay-Angebote für einen privaten Käufer in Deutschland.
@@ -125,6 +127,34 @@ def parse_results(text: str, n: int) -> dict[int, Verdict]:
     return out
 
 
+def find_result_json(data) -> str | None:
+    """Sucht in einer beliebig aufgebauten API-Antwort den Text, der unser {"results": [...]}-JSON ist.
+    (Robust gegen unterschiedliche Antwortformate, z. B. Gemini Interactions vs. generateContent.)"""
+    found = []
+
+    def walk(x):
+        if isinstance(x, dict):
+            if "results" in x and isinstance(x["results"], list):
+                found.append(json.dumps(x))
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+        elif isinstance(x, str) and '"results"' in x:
+            s = x.strip()
+            if s.startswith("```"):
+                s = s.strip("`").removeprefix("json").strip()
+            try:
+                json.loads(s)
+                found.append(s)
+            except ValueError:
+                pass
+
+    walk(data)
+    return found[-1] if found else None
+
+
 class AIChecker:
     def __init__(self, settings, client=None, http=None):
         opts = settings.ai or {}
@@ -139,12 +169,16 @@ class AIChecker:
         elif provider == "auto":
             if client is not None or os.environ.get("ANTHROPIC_API_KEY"):
                 provider = "anthropic"
+            elif os.environ.get("GEMINI_API_KEY"):
+                provider = "gemini"
             else:   # GitHub Models wurde am 30.07.2026 eingestellt -> nicht mehr automatisch
                 provider = "off"
         self.provider = provider
         self.enabled = provider != "off"
-        self.model = opts.get("model") or (
-            "claude-opus-5-5" if provider == "anthropic" else "openai/gpt-4.1-mini")
+        self.model = opts.get("model") or {
+            "anthropic": "claude-opus-5-5",
+            "gemini": "gemini-3.5-flash-lite",
+        }.get(provider, "openai/gpt-4.1-mini")
         self.effort = opts.get("effort", "low")
 
     # ------------------------------------------------------------------
@@ -176,6 +210,8 @@ class AIChecker:
     def _ask(self, prompt: str) -> str | None:
         if self.provider == "github":
             return self._ask_github(prompt)
+        if self.provider == "gemini":
+            return self._ask_gemini(prompt)
         return self._ask_anthropic(prompt)
 
     def _ask_github(self, prompt: str) -> str | None:
@@ -216,6 +252,50 @@ class AIChecker:
                         r.status_code, r.headers.get("content-type"), r.text[:400])
             return None
         return content
+
+    # --- Google Gemini (kostenloser Key aus aistudio.google.com/apikey) ------
+    def _ask_gemini(self, prompt: str) -> str | None:
+        key = os.environ.get("GEMINI_API_KEY", "")
+        headers = {"x-goog-api-key": key, "Content-Type": "application/json"}
+        attempts = [
+            # aktuelle Interactions API
+            (f"{GEMINI_BASE}/interactions", {**headers, "Api-Revision": GEMINI_API_REVISION},
+             {"model": self.model, "input": SYSTEM + "\n\n" + prompt,
+              "response_format": {"type": "text", "mime_type": "application/json", "schema": SCHEMA}}),
+            # bisherige generateContent-API als Ausweichweg
+            (f"{GEMINI_BASE}/models/{self.model}:generateContent", headers,
+             {"systemInstruction": {"parts": [{"text": SYSTEM}]},
+              "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+              "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}}),
+        ]
+        for url, hdrs, body in attempts:
+            try:
+                r = self.http.post(url, headers=hdrs, json=body, timeout=60)
+            except requests.RequestException as e:
+                log.warning("KI (Gemini) nicht erreichbar: %s", e)
+                return None
+            if r.status_code in (401, 403):
+                log.error("KI (Gemini): Key ungültig oder ohne Berechtigung (HTTP %s): %s",
+                          r.status_code, r.text[:200])
+                self.enabled = False
+                return None
+            if r.status_code == 429:
+                log.warning("KI (Gemini): Gratis-Limit erreicht – Rest dieses Laufs ungeprüft")
+                self.enabled = False
+                return None
+            if r.status_code >= 300:
+                log.warning("KI (Gemini) HTTP %s bei %s: %s", r.status_code, url.split("/v1beta")[1], r.text[:300])
+                continue
+            try:
+                data = r.json()
+            except ValueError:
+                log.warning("KI (Gemini): keine JSON-Antwort: %s", r.text[:300])
+                continue
+            text = find_result_json(data)
+            if text:
+                return text
+            log.warning("KI (Gemini): Antwortformat unbekannt: %s", json.dumps(data)[:400])
+        return None
 
     def _ask_anthropic(self, prompt: str) -> str | None:
         import anthropic

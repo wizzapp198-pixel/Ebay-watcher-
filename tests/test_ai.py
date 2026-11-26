@@ -104,3 +104,34 @@ def test_prompt_and_parse():
     assert "nur einzelne Karte" in p and 'id="2"' in p and "Komplettsystem" in p and "800 €" in p
     r = parse_results('{"results":[{"id":1,"matches":false,"is_offer":true,"reason":"PC"},{"id":9,"matches":true,"is_offer":true,"reason":"x"}]}', 2)
     assert list(r) == [1] and not r[1].ok
+
+
+def test_gemini_interactions_and_fallback(settings, store, watch, monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "k")
+
+    class GemHttp:
+        def __init__(self):
+            self.calls = []
+
+        def post(self, url, headers=None, json=None, timeout=None):
+            import json as j
+            self.calls.append((url, headers, json))
+            if url.endswith("/interactions"):      # neue API antwortet (hier) mit Fehler -> Ausweichweg
+                return SimpleNamespace(status_code=404, text="not found", headers={}, json=lambda: {})
+            body = {"candidates": [{"content": {"parts": [{"text": "```json\n" + j.dumps(RESULTS) + "\n```"}]}}]}
+            return SimpleNamespace(status_code=200, text="", headers={}, json=lambda: body)
+
+    http = GemHttp()
+    ai = AIChecker(Settings(), http=http)
+    assert ai.provider == "gemini" and ai.model == "gemini-3.5-flash-lite"
+    n, st = run_twice(settings, store, watch, [good_ka(1), good_ka(2), good_ka(3)], ai)
+    assert st.ai_rejected == 2 and len(n.sent) == 1
+    assert http.calls[0][1]["x-goog-api-key"] == "k" and http.calls[0][1]["Api-Revision"]
+    assert ":generateContent" in http.calls[1][0]
+
+
+def test_find_result_json_interactions_shape():
+    from watcher.ai import find_result_json
+    data = {"steps": [{"content": [{"type": "text", "text": json.dumps(RESULTS)}]}]}
+    assert json.loads(find_result_json(data))["results"][0]["id"] == 1
+    assert find_result_json({"x": "OK"}) is None

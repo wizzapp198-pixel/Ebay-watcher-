@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  models: read
 
 jobs:
   pytest:
@@ -27,3 +26,9 @@ jobs:
           python -m watcher --probe
           sleep 5
           PROBE_QUERY="rx 9070 xt" PROBE_MAX=800 python -m watcher --probe
+      - name: KI-Diagnose (nur wenn ein KI-Key als Secret gesetzt ist)
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m watcher.ai_probe
