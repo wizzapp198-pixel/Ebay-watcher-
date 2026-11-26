@@ -141,8 +141,6 @@ class AIChecker:
                 provider = "anthropic"
             else:   # GitHub Models wurde am 30.07.2026 eingestellt -> nicht mehr automatisch
                 provider = "off"
-            if False:
-                provider = "off"
         self.provider = provider
         self.enabled = provider != "off"
         self.model = opts.get("model") or (
