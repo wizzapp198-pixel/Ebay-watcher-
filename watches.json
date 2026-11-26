@@ -54,6 +54,24 @@
       ],
       "send_suspicious": true,
       "active": true
+    },
+    {
+      "name": "RTX 5070 Ti",
+      "query": "RTX 5070 Ti",
+      "sources": [
+        "ebay",
+        "kleinanzeigen"
+      ],
+      "max_price": 780.0,
+      "ref_price": 1100.0,
+      "condition": "egal",
+      "buying": "egal",
+      "exclude": [
+        "kein käuferschutz"
+      ],
+      "ai_hint": "Nur die einzelne karte.",
+      "send_suspicious": true,
+      "active": true
     }
   ]
 }
