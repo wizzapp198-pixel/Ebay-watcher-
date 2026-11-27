@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583467483",
+   "source": "kleinanzeigen",
+   "title": "Gigabyte AORUS GeForce RTX 5070 Ti 16Gb Master Gaming",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-aorus-geforce-rtx-5070-ti-16gb-master-gaming/3583467483-225-21884",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/4a/4aceea7f-9de7-4916-8d8b-d2b37971c61e?rule=$_59.AUTO",
+   "location": "17321 Löcknitz",
+   "watch": "RTX 5070 Ti",
+   "score": 25,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird zum Verkauf angeboten.; 🚩 PayPal Freunde; aktiv seit 21.10.2024; TOP Zufriedenheit, Sehr freundlich, Sehr zuverlässig; privat; Versand möglich; ⚠ Preis nur 39% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T02:31:26+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583457409",
    "source": "kleinanzeigen",
    "title": "ASUS ROG Strix Gaming GeForce RTX 5070 Ti OC 16GB NVIDIA",
