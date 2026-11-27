@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584011967",
+   "source": "kleinanzeigen",
+   "title": "ASRock RX 9070 XT Steel Legend 16 GB Weiß",
+   "price": 450.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/asrock-rx-9070-xt-steel-legend-16-gb-weiss/3584011967-225-1604",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/a2/a2f5cbcf-f351-4ff0-9f69-84f8839e401c?rule=$_59.AUTO",
+   "location": "32257 Bünde",
+   "watch": "RX 9070 XT",
+   "score": 57,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird direkt und einzeln zum Kauf angeboten.; 🚩 PayPal Freunde, Krypto; aktiv seit 05.10.2019; TOP Zufriedenheit, Besonders freundlich, Besonders zuverlässig; privat; 4 Anzeigen online; Versand möglich; Preis 50% vom Ref.-Preis (auffällig)",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T16:45:51+00:00"
+  },
+  {
    "key": "kleinanzeigen:3554928933",
    "source": "kleinanzeigen",
    "title": "AMD Radeon rx 9070 Asus Prime oc 16gb gddr6 Gaming pc",
