@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584249532",
+   "source": "kleinanzeigen",
+   "title": "Grafikkarte MSI GeForce RTX 5070 Ti 16G GAMING TRIO OC White",
+   "price": 529.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/grafikkarte-msi-geforce-rtx-5070-ti-16g-gaming-trio-oc-white/3584249532-225-9090",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/43/4365f660-a409-40a4-9bca-3a9c5de65d90?rule=$_59.AUTO",
+   "location": "72135 Dettenhausen",
+   "watch": "RTX 5070 Ti",
+   "score": 32,
+   "reasons": "KI ✓ Das Angebot ist eine einzelne Grafikkarte und entspricht exakt dem Suchauftrag.; 🚩 PayPal Freunde; aktiv seit 17.02.2022; TOP Zufriedenheit, Freundlich, Zuverlässig; privat; 3 Anzeigen online; Versand möglich; ⚠ Preis nur 46% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T22:46:16+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584242487",
    "source": "kleinanzeigen",
    "title": "Grafikkarte MSI GeForce RTX 5070 Ti 16G GAMING TRIO OC White",
