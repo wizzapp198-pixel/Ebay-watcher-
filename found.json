@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3554928933",
+   "source": "kleinanzeigen",
+   "title": "AMD Radeon rx 9070 Asus Prime oc 16gb gddr6 Gaming pc",
+   "price": 700.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/amd-radeon-rx-9070-asus-prime-oc-16gb-gddr6-gaming-pc/3554928933-225-8259",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/14/14985f1d-8b2b-4e03-adfa-092dae3315fe?rule=$_59.AUTO",
+   "location": "69168 Wiesloch",
+   "watch": "RX 9070",
+   "score": 93,
+   "reasons": "KI ✓ Die Grafikkarte wird einzeln zum Verkauf angeboten.; aktiv seit 04.05.2020; OK Zufriedenheit, Zuverlässig; privat; 5 Anzeigen online; Versand möglich; Preis 82% vom Ref.-Preis",
+   "kind": "bargain",
+   "found_at": "2026-11-27T15:46:33+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583954487",
    "source": "kleinanzeigen",
    "title": "MSI GeForce RTX 5070 Ti 16G Ventus 3X OC Plus - 16 GB GDDR7",
