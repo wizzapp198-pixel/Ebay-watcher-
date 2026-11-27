@@ -31,7 +31,7 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 
 ## RTX 4070 Ti Super (▶️ aktiv)
 - Suche: `RTX 4070 Ti Super` · Quellen: eBay + Kleinanzeigen
-- Preis: – bis 600 € · Ref.: 800 €
+- Preis: – bis 700 € · Ref.: 800 €
 - Zustand egal · eBay-Kaufart egal · KA: deutschlandweit · ⚠️ verdächtige senden
 - Ausschluss: kein käuferschutz
 - KI-Wunsch: Nur die Karte.

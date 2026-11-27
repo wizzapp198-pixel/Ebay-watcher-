@@ -62,7 +62,7 @@ watches:
   sources:
   - ebay
   - kleinanzeigen
-  max_price: 600.0
+  max_price: 700.0
   ref_price: 800.0
   condition: egal
   buying: egal
