@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583474382",
+   "source": "kleinanzeigen",
+   "title": "Gigabyte GeForce RTX 5070 Ti 16GB Windforce SSF Grafikkarte",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-geforce-rtx-5070-ti-16gb-windforce-ssf-grafikkarte/3583474382-225-640",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/57/572dca51-2260-4e97-afc7-25d05fca0d46?rule=$_59.AUTO",
+   "location": "25938 Wyk",
+   "watch": "RTX 5070 Ti",
+   "score": 32,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird zum Verkauf angeboten.; 🚩 PayPal Freunde; aktiv seit 01.01.2015; TOP Zufriedenheit, Freundlich, Zuverlässig; privat; Versand möglich; ⚠ Preis nur 39% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T05:01:35+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583467483",
    "source": "kleinanzeigen",
    "title": "Gigabyte AORUS GeForce RTX 5070 Ti 16Gb Master Gaming",
