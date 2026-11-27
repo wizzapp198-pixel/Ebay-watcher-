@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583639255",
+   "source": "kleinanzeigen",
+   "title": "Gigabyte AORUS GeForce RTX 5070 Ti 16Gb Master Gaming",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-aorus-geforce-rtx-5070-ti-16gb-master-gaming/3583639255-225-634",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/89/8925079e-68a5-4c38-932e-084c64c4fa6c?rule=$_59.AUTO",
+   "location": "25980 Westerland",
+   "watch": "RTX 5070 Ti",
+   "score": 22,
+   "reasons": "KI ✓ Das Angebot bietet genau die gesuchte Grafikkarte an.; 🚩 PayPal Freunde; TOP Zufriedenheit, Sehr zuverlässig, Sehr freundlich; privat; Versand möglich; ⚠ Preis nur 39% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T10:16:29+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583548733",
    "source": "kleinanzeigen",
    "title": "Geforce RTX 4080 Phantom 16 GB GDDR6X von Gainward",
