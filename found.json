@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583548733",
+   "source": "kleinanzeigen",
+   "title": "Geforce RTX 4080 Phantom 16 GB GDDR6X von Gainward",
+   "price": 480.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/geforce-rtx-4080-phantom-16-gb-gddr6x-von-gainward/3583548733-225-5292",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/d8/d827afcf-f2b4-4b82-a487-31912e7bd5bf?rule=$_59.AUTO",
+   "location": "56850 Raversbeuren",
+   "watch": "RTX 4080 / 4080 Super",
+   "score": 7,
+   "reasons": "KI ✓ Das Angebot ist eine voll funktionsfähige RTX 4080 Grafikkarte.; Account neu (seit 27.11.2026); privat; Versand möglich; ⚠ Preis nur 46% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T08:31:39+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583474382",
    "source": "kleinanzeigen",
    "title": "Gigabyte GeForce RTX 5070 Ti 16GB Windforce SSF Grafikkarte",
