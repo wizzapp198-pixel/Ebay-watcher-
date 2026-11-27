@@ -107,6 +107,26 @@
       "ai_hint": "Nur die Karte.",
       "send_suspicious": true,
       "active": true
+    },
+    {
+      "name": "RX 9070",
+      "query": "RX 9070",
+      "sources": [
+        "ebay",
+        "kleinanzeigen"
+      ],
+      "max_price": 700.0,
+      "ref_price": 850.0,
+      "condition": "egal",
+      "buying": "egal",
+      "exclude": [
+        "kein käuferschutz",
+        "nur freunde und familie"
+      ],
+      "ai_hint": "Nur die Grafikarte",
+      "min_trust": 70,
+      "send_suspicious": true,
+      "active": true
     }
   ]
 }

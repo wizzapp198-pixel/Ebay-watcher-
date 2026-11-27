@@ -43,3 +43,10 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 - Ausschluss: kein käuferschutz
 - KI-Wunsch: Nur die Karte.
 
+## RX 9070 (▶️ aktiv)
+- Suche: `RX 9070` · Quellen: eBay + Kleinanzeigen
+- Preis: – bis 700 € · Ref.: 850 €
+- Zustand egal · eBay-Kaufart egal · KA: deutschlandweit · min. Vertrauen 70 · ⚠️ verdächtige senden
+- Ausschluss: kein käuferschutz, nur freunde und familie
+- KI-Wunsch: Nur die Grafikarte
+
