@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583954487",
+   "source": "kleinanzeigen",
+   "title": "MSI GeForce RTX 5070 Ti 16G Ventus 3X OC Plus - 16 GB GDDR7",
+   "price": 850.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/msi-geforce-rtx-5070-ti-16g-ventus-3x-oc-plus-16-gb-gddr7/3583954487-225-9555",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/20/2066d01a-0121-42d2-a7b7-e1332adb78a6?rule=$_59.AUTO",
+   "location": "30627 Misburg-Anderten",
+   "watch": "RTX 5070 Ti",
+   "score": 70,
+   "reasons": "KI ✓ Das Angebot enthält die exakt gesuchte Grafikkarte als Einzelteil.; privat; Preis 74% vom Ref.-Preis",
+   "kind": "bargain",
+   "found_at": "2026-11-27T15:31:28+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583710227",
    "source": "kleinanzeigen",
    "title": "Gigabyte AORUS GeForce RTX 5070 Ti 16Gb Master Gaming",
