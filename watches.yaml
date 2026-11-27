@@ -16,20 +16,6 @@ watches:
   min_trust: 70
   send_suspicious: true
   active: true
-- name: RX 9070 OC
-  query: RX 9070 OC
-  sources:
-  - ebay
-  - kleinanzeigen
-  max_price: 630.0
-  ref_price: 700.0
-  condition: egal
-  buying: egal
-  exclude:
-  - kein käuferschutz
-  - nur freunde und familie
-  ai_hint: Nur die Grafikarte
-  active: true
 - name: RX 7900 XTX
   query: 7900 XTX, Radeon 7900 XTX, RX 7900 XTX
   sources:

@@ -9,13 +9,6 @@ _Automatisch erzeugt. Ändern/Anlegen/Löschen über **Issues → New issue**._
 - Ausschluss: kein käuferschutz
 - KI-Wunsch: NUR DIE KARTE kein PC, keine Suche , kein Ankauf, nur die Karte.
 
-## RX 9070 OC (▶️ aktiv)
-- Suche: `RX 9070 OC` · Quellen: eBay + Kleinanzeigen
-- Preis: – bis 630 € · Ref.: 700 €
-- Zustand egal · eBay-Kaufart egal · KA: deutschlandweit
-- Ausschluss: kein käuferschutz, nur freunde und familie
-- KI-Wunsch: Nur die Grafikarte
-
 ## RX 7900 XTX (▶️ aktiv)
 - Suche: `7900 XTX, Radeon 7900 XTX, RX 7900 XTX` · Quellen: eBay + Kleinanzeigen
 - Preis: – bis 650 € · Ref.: 800 €
