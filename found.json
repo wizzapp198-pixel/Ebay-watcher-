@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3582439455",
+   "source": "kleinanzeigen",
+   "title": "MSI RTX 5070 Ti Gaming Trio OC, 16GB, wie neu, tausch möglich",
+   "price": 1.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/msi-rtx-5070-ti-gaming-trio-oc-16gb-wie-neu-tausch-moeglich/3582439455-225-26379",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/43/437ef06d-0d5d-4b8f-832a-616757cfeea0?rule=$_59.AUTO",
+   "location": "25885 Wester-Ohrstedt",
+   "watch": "RTX 5070 Ti",
+   "score": 63,
+   "reasons": "KI ✓ Das Angebot ist eine passende RTX 5070 Ti Grafikkarte zum Verkauf.; aktiv seit 12.04.2025; TOP Zufriedenheit, Freundlich, Sehr zuverlässig; privat; Direkt kaufen/Sicher bezahlen; ⚠ Preis nur 0% vom Ref.-Preis",
+   "kind": "bargain",
+   "found_at": "2026-11-27T21:31:25+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584163380",
    "source": "kleinanzeigen",
    "title": "PNY RTX 4080 SUPER 16GB GDDR6X – High-End GPU",
