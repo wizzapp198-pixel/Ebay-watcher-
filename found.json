@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3583710227",
+   "source": "kleinanzeigen",
+   "title": "Gigabyte AORUS GeForce RTX 5070 Ti 16Gb Master Gaming",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-aorus-geforce-rtx-5070-ti-16gb-master-gaming/3583710227-225-23118",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/12/12a6c312-cec1-4f17-9786-772f9c90d5ed?rule=$_59.AUTO",
+   "location": "17328 Penkun",
+   "watch": "RTX 5070 Ti",
+   "score": 32,
+   "reasons": "KI ✓ Es handelt sich um die gesuchte Grafikkarte als Verkaufsangebot.; 🚩 PayPal Freunde; aktiv seit 01.01.2015; TOP Zufriedenheit, Freundlich, Zuverlässig; privat; Versand möglich; ⚠ Preis nur 39% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T11:31:25+00:00"
+  },
+  {
    "key": "kleinanzeigen:3583675540",
    "source": "kleinanzeigen",
    "title": "Amd Radeon RX 9070 XT Sapphire Nitro+",
