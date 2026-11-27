@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584163380",
+   "source": "kleinanzeigen",
+   "title": "PNY RTX 4080 SUPER 16GB GDDR6X – High-End GPU",
+   "price": 720.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/pny-rtx-4080-super-16gb-gddr6x-high-end-gpu/3584163380-225-4816",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/08/081c76cb-83b9-47bc-9690-b7de1d9a9cb6?rule=$_59.AUTO",
+   "location": "65428 Rüsselsheim",
+   "watch": "RTX 4080 / 4080 Super",
+   "score": 30,
+   "reasons": "KI ✓ Es ist die gesuchte Grafikkarte und ein Verkaufsangebot.; 🚩 Krypto; aktiv seit 10.05.2025; privat; 3 Anzeigen online; Versand möglich; Preis 69% vom Ref.-Preis (auffällig)",
+   "kind": "suspicious",
+   "found_at": "2026-11-27T19:46:20+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584011967",
    "source": "kleinanzeigen",
    "title": "ASRock RX 9070 XT Steel Legend 16 GB Weiß",
