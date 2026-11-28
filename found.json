@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584890259",
+   "source": "kleinanzeigen",
+   "title": "Gigabyte GeForce RTX 4070 Ti SUPER 16GB GDDR6X",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-geforce-rtx-4070-ti-super-16gb-gddr6x/3584890259-225-2431",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/fd/fdd18b1c-e33b-4cef-84eb-725c671fc232?rule=$_59.AUTO",
+   "location": "26548 Norderney",
+   "watch": "RTX 4070 Ti Super",
+   "score": 87,
+   "reasons": "KI ✓ Die gesuchte Grafikkarte wird direkt und funktionstüchtig angeboten.; aktiv seit 12.03.2020; TOP Zufriedenheit, Freundlich, Zuverlässig; privat; 2 Anzeigen online; Versand möglich; Preis 56% vom Ref.-Preis (auffällig)",
+   "kind": "bargain",
+   "found_at": "2026-11-28T15:31:37+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584681514",
    "source": "kleinanzeigen",
    "title": "GIGABYTE GeForce RTX 5070 Ti AERO OC 16GB GDDR7",
