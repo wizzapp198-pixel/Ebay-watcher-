@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584337364",
+   "source": "kleinanzeigen",
+   "title": "GIGABYTE GeForce RTX 4070 Ti SUPER WINDFORCE OC 16 GB",
+   "price": 450.0,
+   "price_negotiable": false,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-geforce-rtx-4070-ti-super-windforce-oc-16-gb/3584337364-225-21596",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/cc/cc795649-55ad-4bd8-b00a-5ed54844d368?rule=$_59.AUTO",
+   "location": "17449 Karlshagen",
+   "watch": "RTX 4070 Ti Super",
+   "score": 50,
+   "reasons": "KI ✓ Es ist die gesuchte Grafikkarte.; 🚩 PayPal Freunde, Anzahlung; aktiv seit 12.03.2023; OK Zufriedenheit, Sehr freundlich, Sehr zuverlässig; privat; Versand möglich; Preis 56% vom Ref.-Preis (auffällig)",
+   "kind": "suspicious",
+   "found_at": "2026-11-28T08:31:39+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584286089",
    "source": "kleinanzeigen",
    "title": "Gigabyte AORUS GeForce RTX 5070 Ti 16Gb Master Gaming",
