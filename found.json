@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584681514",
+   "source": "kleinanzeigen",
+   "title": "GIGABYTE GeForce RTX 5070 Ti AERO OC 16GB GDDR7",
+   "price": 470.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/gigabyte-geforce-rtx-5070-ti-aero-oc-16gb-gddr7/3584681514-225-5529",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/2c/2c2bf6f4-b705-47b6-893b-b743564b34e6?rule=$_59.AUTO",
+   "location": "87561 Oberstdorf",
+   "watch": "RTX 5070 Ti",
+   "score": 50,
+   "reasons": "KI ✓ Es wird genau die gesuchte Grafikkarte angeboten.; aktiv seit 25.06.2015; OK Zufriedenheit, Zuverlässig; privat; 2 Anzeigen online; Versand möglich; ⚠ Preis nur 41% vom Ref.-Preis",
+   "kind": "suspicious",
+   "found_at": "2026-11-28T12:46:16+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584337364",
    "source": "kleinanzeigen",
    "title": "GIGABYTE GeForce RTX 4070 Ti SUPER WINDFORCE OC 16 GB",
