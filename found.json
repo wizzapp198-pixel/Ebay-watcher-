@@ -1,6 +1,21 @@
 {
  "found": [
   {
+   "key": "kleinanzeigen:3584959645",
+   "source": "kleinanzeigen",
+   "title": "Sapphire Nitro+ Radeon RX 7900 XTX mit 24 GB VRAM",
+   "price": 325.0,
+   "price_negotiable": true,
+   "url": "https://www.kleinanzeigen.de/s-anzeige/sapphire-nitro-radeon-rx-7900-xtx-mit-24-gb-vram/3584959645-225-811",
+   "image": "https://img.kleinanzeigen.de/api/v1/prod-ads/images/a0/a0b9b615-d694-4b19-ac82-5d6838c8b59f?rule=$_59.AUTO",
+   "location": "23909 Ratzeburg",
+   "watch": "RX 7900 XTX",
+   "score": 0,
+   "reasons": "KI ✓ Die Grafikkarte entspricht genau dem Suchauftrag.; 🚩 WhatsApp; Account jung (seit 24.10.2026); privat; Versand möglich; ⚠ Preis nur 41% vom Ref.-Preis; Hinweis: Telefonnummer im Text",
+   "kind": "suspicious",
+   "found_at": "2026-11-28T17:01:31+00:00"
+  },
+  {
    "key": "kleinanzeigen:3584890259",
    "source": "kleinanzeigen",
    "title": "Gigabyte GeForce RTX 4070 Ti SUPER 16GB GDDR6X",
